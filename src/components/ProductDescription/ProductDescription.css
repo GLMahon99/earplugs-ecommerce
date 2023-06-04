@@ -1,0 +1,39 @@
+.description-area {
+    width: 75%;
+    
+}
+.description-text-area , .indicaciones-text-area{
+    width: 85%;
+}
+
+.nav-link-description{
+    color: var(--color-primary);
+}
+
+.tab-content{
+    background-color: #f6f6f6;
+}
+
+.nav-tabs .nav-item .active{
+    background-color: #f6f6f6;
+    border-top: 4px solid var(--color-tertiary);
+    color: var(--color-tertiary);
+}
+
+.tab-pane .description , .indicaciones, .comments-text{
+    font-family: var(--font-primary);
+    letter-spacing: 0.5px;
+    word-spacing: 0.25em;
+    text-indent: 10px;
+}
+.puntuacion {
+    color: var(--color-primary);
+}
+
+.bi-star-fill, .bi-star-half {
+    color: var(--color-tertiary);
+}
+
+.comments-text{
+    font-size: small;
+}

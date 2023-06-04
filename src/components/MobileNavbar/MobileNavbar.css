@@ -1,0 +1,58 @@
+.navbar{
+    background-color: var(--color-primary);
+}
+
+.offcanvas-body{
+    background-color: var(--color-primary);
+}
+
+.offcanvas-body .nav-item{
+    color: white;
+}
+
+.offcanvas{
+    background-color: var(--color-primary);
+}
+
+.offcanvas-header h5{
+    color: white;
+}
+
+.dropdown-menu{
+    background-color: var(--color-tertiary);
+}
+
+ .navlink {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.navlink:hover{
+    color: #fff;
+
+    
+}
+
+h1 {
+    font-size: 30px;
+    margin: 0;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    color: #fff;
+    font-family: var(--font-primary);
+}
+
+h1 span{
+    color: var(--color-secondary);
+}
+
+.navbar-toggler-icon{
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.navbar-toggler{
+    color: #ffffff7e;
+}
+
+.nav-item{
+    margin-top: 15px;
+}
