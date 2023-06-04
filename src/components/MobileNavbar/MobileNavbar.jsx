@@ -8,7 +8,7 @@ import { NavLink } from 'react-router-dom';
 const MobileNavbar = () => {
     return ( <nav className="navbar fixed-top">
     <div className="container-fluid">
-      <h1 className='px-4'>Earplugs<span>.</span></h1>
+      <h1 translate="no" className='px-4'>Earplugs<span>.</span></h1>
       <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
         <span className="navbar-toggler-icon"></span>
       </button>

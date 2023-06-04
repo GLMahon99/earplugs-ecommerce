@@ -8,7 +8,7 @@ const Navbar = () => {
       <header id="header" className="header d-flex align-items-center ">
       <div className="container-fluid container-xl d-flex align-items-center justify-content-between">
         <a href="/" className="logo d-flex align-items-center">
-          <h1>
+          <h1 translate="no">
             Earplugs<span>.</span>
           </h1>
         </a>
