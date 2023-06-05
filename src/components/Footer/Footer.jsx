@@ -10,7 +10,7 @@ const Footer = () => {
         <div className="row gy-4">
           <div className="col-lg-5 col-md-12 footer-info">
             <a href="index.html" className="logo d-flex align-items-center">
-              <span>Earplugs</span>
+              <span translate="no">Earplugs</span>
             </a>
             <p>
               Dale a tus oídos el cuidado que se merecen. Disfruta de noches de

@@ -14,7 +14,7 @@ const MobileNavbar = () => {
       </button>
       <div className="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
         <div className="offcanvas-header">
-        <h1 className='px-2'>Earplugs<span>.</span></h1>
+        <h1 translate="no" className='px-2'>Earplugs<span>.</span></h1>
           <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div className="offcanvas-body">
