@@ -1,10 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import './Products.css';
 import { useParams } from 'react-router-dom';
+import axios from 'axios';
 
 
-
-import {getFirestore, collection, getDocs, query, where} from 'firebase/firestore';
 import ProductsList from './ProductsList';
 
 import { Link } from 'react-router-dom';
@@ -13,23 +12,20 @@ const Products = () => {
 
 
   const [ dataProducts, setDataProducts ] = useState([]);
- 
+  const [loading, setLoading] = useState(false);
   const {categoryId} = useParams();
 
 
   useEffect(() => {
-        const querydb = getFirestore();
-        const querycollection = collection(querydb,"items");
-        if(categoryId) {
-          const queryfilter = query(querycollection, where('categoryId','==', categoryId))
-          getDocs(queryfilter)
-          .then(res => setDataProducts(res.docs.map(item => ({id: item.id, ...item.data()}))))
-        } else {
-          getDocs(querycollection)
-          .then(res => setDataProducts(res.docs.map(item => ({id: item.id, ...item.data()}))))
-        }
+        const cargarProductos = async () => {
+          setLoading(true);
+          const response = await axios.get('http://localhost:3000/api/products');
+          setDataProducts(response.data);
+          setLoading(false);
+        };
+        cargarProductos();
         
-  }, [categoryId])
+  }, [])
   
   console.log(dataProducts);
 
@@ -52,7 +48,7 @@ const Products = () => {
         <div>
           <ul className="products-flters">
             <li  className="filter-active"><Link to='/products'>Todos los productos</Link></li>
-            <li><Link className='links' to='/products/waterproof'>Proteccion del agua</Link></li>
+            <li><Link className='links' to='/products/waterproof'>Proteccion agua y ruido</Link></li>
             <li><Link className='links' to='/products/soundreducers'>Reductores de sonido</Link></li>
             <li><Link className='links' to='/products/watersports'>Deportes acuaticos</Link></li>
           </ul>

@@ -15,6 +15,7 @@ const ProductDescription = ({ description, indications, comments, classification
     comment: ""
   });
 
+  
   const handleTabClick = (tab) => {
     setActiveTab(tab);
   };
