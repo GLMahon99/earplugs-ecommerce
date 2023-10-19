@@ -34,9 +34,9 @@ const MobileNavbar = () => {
                 <li>
                   <hr className="dropdown-divider"/>
                 </li>
-                <li><NavLink className='navlink px-2'  to='/products/waterproof'>Proteccion del agua</NavLink ></li>
-                <li><NavLink className='navlink px-2'  to='/products/soundreducers'>Reductores de sonido</NavLink ></li>
-                <li><NavLink className='navlink px-2'  to='/products/watersports'>Deportes acuáticos</NavLink ></li>
+                <li><NavLink className='navlink px-2'  to='/products/both'>Proteccion agua y ruido</NavLink ></li>
+                <li><NavLink className='navlink px-2'  to='/products/sound'>Reductores de sonido</NavLink ></li>
+                <li><NavLink className='navlink px-2'  to='/products/water'>Deportes acuáticos</NavLink ></li>
               </ul>
             </li>
             <li className="nav-item">

@@ -58,15 +58,15 @@ const Footer = () => {
             <h4>Productos</h4>
             <ul>
               <li>
-                <NavLink to="/products/waterproof">Proteccion del agua</NavLink>
+                <NavLink to="/products/both">Proteccion agua y ruido</NavLink>
               </li>
               <li>
-                <NavLink to="/products/soundreducers">
+                <NavLink to="/products/sound">
                   Reductores de sonido
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/products/watersports">Deportes acuáticos</NavLink>
+                <NavLink to="/products/water">Deportes acuáticos</NavLink>
               </li>
             </ul>
           </div>

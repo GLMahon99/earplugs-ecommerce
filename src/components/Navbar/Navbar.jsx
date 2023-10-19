@@ -21,9 +21,9 @@ const Navbar = () => {
                 <li className="dropdown"><NavLink  to='/products'><span>Productos</span> <i className="bi bi-chevron-down dropdown-indicator"></i></NavLink >
                   <ul>
                     <li><NavLink  to='/products'>Todos los productos</NavLink ></li>
-                    <li><NavLink  to='/products/waterproof'>Proteccion del agua</NavLink ></li>
-                    <li><NavLink  to='/products/soundreducers'>Reductores de sonido</NavLink ></li>
-                    <li><NavLink  to='/products/watersports'>Deportes acuáticos</NavLink ></li>
+                    <li><NavLink  to='/products/both'>Proteccion agua y ruido</NavLink ></li>
+                    <li><NavLink  to='/products/sound'>Reductores de sonido</NavLink ></li>
+                    <li><NavLink  to='/products/water'>Deportes acuáticos</NavLink ></li>
                   </ul>
                 </li>
                 <li><NavLink  to='/#contact'>Contacto</NavLink ></li>

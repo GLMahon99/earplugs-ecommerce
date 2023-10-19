@@ -19,7 +19,7 @@ const ProductDetail = () => {
     const cargarProducto = async () => {
       setLoading(true);
       const response = await axios.get(
-        `http://localhost:3000/api/products/${detalleId}`
+        `http://localhost:3000/api/product/${detalleId}`
       );
       setData(response.data);
       setLoading(false);

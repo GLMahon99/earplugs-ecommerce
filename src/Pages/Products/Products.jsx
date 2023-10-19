@@ -13,21 +13,28 @@ const Products = () => {
 
   const [ dataProducts, setDataProducts ] = useState([]);
   const [loading, setLoading] = useState(false);
-  const {categoryId} = useParams();
+ 
 
+
+  const { category } = useParams(); // Usar el nombre correcto de la variable
 
   useEffect(() => {
-        const cargarProductos = async () => {
-          setLoading(true);
-          const response = await axios.get('http://localhost:3000/api/products');
-          setDataProducts(response.data);
-          setLoading(false);
-        };
-        cargarProductos();
-        
-  }, [])
-  
-  console.log(dataProducts);
+    const cargarProductos = async () => {
+      setLoading(true);
+      let response;
+      if (category !== undefined) {
+        response = await axios.get(`http://localhost:3000/api/products/${category}`);
+      } else {
+        response = await axios.get('http://localhost:3000/api/products');
+      }
+      setDataProducts(response.data);
+      setLoading(false);
+    };
+    cargarProductos();
+  }, [category]); // Agregar 'categoria' como dependencia para que se vuelva a cargar al cambiar
+
+  console.log('data',dataProducts);
+  console.log('categoria parametro', category);
 
 
 
@@ -48,9 +55,9 @@ const Products = () => {
         <div>
           <ul className="products-flters">
             <li  className="filter-active"><Link to='/products'>Todos los productos</Link></li>
-            <li><Link className='links' to='/products/waterproof'>Proteccion agua y ruido</Link></li>
-            <li><Link className='links' to='/products/soundreducers'>Reductores de sonido</Link></li>
-            <li><Link className='links' to='/products/watersports'>Deportes acuaticos</Link></li>
+            <li><Link className='links' to='/products/both'>Proteccion agua y ruido</Link></li>
+            <li><Link className='links' to='/products/sound'>Reductores de sonido</Link></li>
+            <li><Link className='links' to='/products/water'>Deportes acuaticos</Link></li>
           </ul>
         </div>
 

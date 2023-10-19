@@ -1,9 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import './Questions.css';
-
-import { db } from '../../firebase/firebase';
-
-import { collection, getDocs} from 'firebase/firestore';
+import axios from 'axios';
 
 import QuestionItem from './QuestionItem';
 
@@ -12,18 +9,16 @@ const Questions = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const querySnapshot = await getDocs(collection(db, "questions"));
-      const documents = querySnapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-
-      setData(documents);
-    };
-
-    fetchData();
-  }, [data]);
+    const cargarFaq = async () => {
+      
+      const response = await axios.get(
+        `http://localhost:3000/api/faq`
+      );
+      setData(response.data);
+      
+    }
+    cargarFaq();
+  }, []);
 
     return ( 
         <section id="faq" className="faq">
