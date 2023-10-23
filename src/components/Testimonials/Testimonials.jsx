@@ -1,29 +1,26 @@
 import React, {useEffect, useState} from 'react';
 import './Testimonials.css';
 import TestimonialsSwiper from './TestimonialsSwiper';
-import { db } from '../../firebase/firebase';
-
-import { collection, getDocs} from 'firebase/firestore';
+import axios from 'axios';
 
 const Testimonials = () => {
 
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState();
+ 
+useEffect(() => {
+  const cargarTestimonio = async () => {
+    
+    const response = await axios.get(
+      `http://localhost:3000/api/testimonials`
+    );
+    setData(response.data);
+    
+  };
+  cargarTestimonio();
+}, []);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const querySnapshot = await getDocs(collection(db, "testimonials"));
-      const documents = querySnapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
 
-      setData(documents);
-    };
-
-    fetchData();
-  }, [data]);
-
-  
 
 return ( <section id="testimonials" className="testimonials">
   <div className="container" data-aos="fade-up">

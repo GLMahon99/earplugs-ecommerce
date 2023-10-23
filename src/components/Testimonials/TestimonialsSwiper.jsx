@@ -40,13 +40,13 @@ const TestimonialsSwiper = ({data}) => {
         onSwiper={(swiper) => console.log(swiper)}
       >
         {data.map((item) => 
-          <SwiperSlide key={item.id}>
+          <SwiperSlide key={item.testimonio_id}>
           <div className="swiper-slide">
               <div className="testimonial-wrap">
                 <div className="testimonial-item">
                   <p>
                     <i className="bi bi-quote quote-icon-left"></i>
-                    {item.testimonial}
+                    {item.testimonio}
                     <i className="bi bi-quote quote-icon-right"></i>
                   </p>
                 </div>

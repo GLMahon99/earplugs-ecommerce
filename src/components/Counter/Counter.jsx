@@ -19,7 +19,7 @@ return ( <section id="stats-counter" className="stats-counter">
 
                 <div className="stats-item d-flex align-items-center">
                     <span className="purecounter">
-                        <CountUp start={0} end={3671} duration={6}/>
+                        <CountUp start={0} end={3671} duration={10}/>
                     </span>
                     
                     <p><strong>Clientes satisfechos y contando</strong> Tu satisfacción es nuestro mayor logro.</p>
