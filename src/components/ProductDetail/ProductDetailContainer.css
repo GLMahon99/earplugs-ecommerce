@@ -9,3 +9,31 @@
 .code {
     color: #1da0f8;
 }
+
+.product-price{
+    color: var(--color-primary);
+    font-size: 30px;
+}
+
+.product-stock{
+    color: #696969;
+    font-size: 12px;
+}
+
+.alert-buy-product{
+    background-color:#183dc291 ;
+    color: white;
+    padding: 5px;
+    border: 1px solid var(--color-primary);
+}
+
+.button-addToCart{
+    background-color: var(--color-tertiary);
+    color: white;
+}
+
+.button-addToCart:hover{
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+}
+

@@ -148,6 +148,14 @@
     .navbar .dropdown ul li {
       min-width: 200px;
     }
+
+   .icon-cart{
+    color: rgba(255, 255, 255, 0.6);
+    }
+
+   .icon-cart:hover{
+      color: #fff;
+      }
   
     .navbar .dropdown ul a {
       padding: 10px 20px;

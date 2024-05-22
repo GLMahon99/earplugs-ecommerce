@@ -5,14 +5,14 @@
     padding-bottom: 100px;
   }
   
-  .products .products-flters {
+  .products .filter-products {
     padding: 0 0 20px 0;
     margin: 0 auto;
     list-style: none;
     text-align: center;
   }
   
-  .products .products-flters li {
+  .products .filter-products li {
     cursor: pointer;
     display: inline-block;
     padding: 0;
@@ -23,27 +23,27 @@
     transition: all 0.3s ease-in-out;
   }
   
-  .products .products-flters li:hover,
-  .products .products-flters li.filter-active {
+  .products .filter-products li:hover,
+  .products .filter-products li.active {
     color: var(--color-primary);
   }
   
-  .products .products-flters li:first-child {
+  .products .filter-products li:first-child {
     margin-left: 0;
   }
   
-  .products .products-flters li:last-child {
+  .products .filter-products li:last-child {
     margin-right: 0;
   }
   
   @media (max-width: 575px) {
-    .products .products-flters li {
+    .products .filter-products li {
       font-size: 14px;
       margin: 0 5px;
     }
   }
   
-  .products .products-wrap {
+  /* .products .products-wrap {
     box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     height: 100%;
@@ -56,6 +56,10 @@
     z-index: 1;
   }
   
+  .products-item:hover{
+    background-color: var(--color-opacity);
+  }
+
   .products .products-wrap .products-info {
     padding: 20px;
     background-color: #fff;
@@ -93,4 +97,66 @@
   .links {
     text-decoration: none;
     color: #6c757d;
+  } */
+
+  .product-item{
+    background-color: #fff;
+    border: 1px solid #e2e2e2;
+    position: relative;
+  }
+
+  .product-item::before {
+    content: ''; /* Crea un pseudo-elemento */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo negro con opacidad baja */
+    z-index: 1; /* Asegura que esté por encima de la imagen y el título */
+    opacity: 0; /* Inicialmente invisible */
+    transition: opacity 1.5s ease; /* Transición suave */
+    border-radius: .25rem;
+  }
+  
+  .product-item:hover::before {
+    opacity: 1; /* Visible al pasar el cursor sobre el elemento */
+  }
+
+  .product-item .container-img-product{
+    display: flex;
+    justify-content: center;
+  }
+
+  .product-item .container-img-product .img-productList{
+    width: 90%;
+  }
+
+  .product-item .container-product-title{
+    margin-bottom: 10px;
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  .product-item .button-description {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2; /* Asegura que esté por encima del fondo */
+    opacity: 0; /* Inicialmente invisible */
+    transition: opacity 1.5s ease; /* Transición suave */
+    color: #fff;
+  }
+  
+  .product-item:hover .button-description {
+    opacity: 1; /* Visible al pasar el cursor sobre el elemento */
+  }
+
+  .product-item .button-description .icon-button-description{
+    font-size: 45px;
+  }
+
+  .product-item .button-description .text-button-description{
+    font-size: 15px;
   }

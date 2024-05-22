@@ -22,6 +22,7 @@
   --color-primary: #183dc2;
   --color-secondary: rgb(252, 252, 0);
   --color-tertiary: #1e47db;
+  --color-opacity:#00000086;
 }
 
 /* Smooth scroll behavior */

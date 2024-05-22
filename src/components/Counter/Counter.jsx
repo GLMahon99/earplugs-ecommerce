@@ -11,7 +11,7 @@ return ( <section id="stats-counter" className="stats-counter">
         <div className="row gy-4 align-items-center">
 
             <div className="col-lg-6">
-                <img src="https://i.ibb.co/Hp1NN5Q/Data-report-pana.png" alt="" className="img-fluid" />
+                <img src="https://i.ibb.co/fMzPggg/Data-report-pana.png" alt="" className="img-fluid" />
                 <a className='invisible' href="https://storyset.com/data">Data illustrations by Storyset</a>
             </div>
 
