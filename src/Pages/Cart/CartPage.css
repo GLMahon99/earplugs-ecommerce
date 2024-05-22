@@ -82,3 +82,8 @@
 .shipping-price{
     color: green;
 }
+
+.data-transfer{
+    color: #fff;
+    background-color: var(--color-primary);
+}

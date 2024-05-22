@@ -11,7 +11,7 @@ const Cart = () => {
     useProductsContext();
   const [preferenceId, setPreferenceId] = useState(null);
   const [isFormLocked, setIsFormLocked] = useState(false);
-  const [methodPay, setMethodPay] = useState({});
+  const [methodPay, setMethodPay] = useState(null);
   const [formData, setFormData] = useState({
     address: "",
     name: "",
@@ -38,6 +38,8 @@ const Cart = () => {
   };
 
   console.log("cart recibe context de el state cart", cart);
+  console.log("metodo de pago inicial: deberia se nulo", methodPay)
+
 
   initMercadoPago("TEST-c2bacbf6-db71-473e-bf35-e163d1590c8c", {
     locale: "es-AR",
@@ -96,13 +98,12 @@ const Cart = () => {
       ...formData,
       [name]: value,
     });
+    
   };
 
-  const handleCheck = (e) => {
-    const { name, value } = e.target;
-    setMethodPay({
-      [name]: value,
-    });
+  const handleCheck = (option) => {
+    setMethodPay(option);
+    console.log("cambia el metodo de pago", methodPay)
   };
 
   return (
@@ -208,12 +209,10 @@ const Cart = () => {
                     <></>
                   )}
                   <div className="shipping-price row row-cols-2">
-                  <div className="col d-flex justify-content-start">
-                     <i class="bi bi-truck"> Envío</i>
+                    <div className="col d-flex justify-content-start">
+                      <i class="bi bi-truck"> Envío</i>
                     </div>
-                    <div className="col d-flex justify-content-end">
-                      $0,00
-                    </div>
+                    <div className="col d-flex justify-content-end">$0,00</div>
                   </div>
                   <div className="total-cart-container row row-cols-2 my-3">
                     <div className="col d-flex justify-content-start">
@@ -450,10 +449,9 @@ const Cart = () => {
                       <input
                         class="form-check-input"
                         type="checkbox"
-                        name="methodPay"
-                        value="mercadopago"
                         id="flexCheckDefault"
-                        onClick={handleCheck}
+                        checked={methodPay === "mercadopago"} 
+                        onChange={() => handleCheck("mercadopago")}
                         disabled={isFormLocked}
                       />
                     </div>
@@ -464,9 +462,8 @@ const Cart = () => {
                       <input
                         class="form-check-input"
                         type="checkbox"
-                        name="methodPay"
-                        value="transferencia"
-                        onClick={handleCheck}
+                        checked={methodPay === "transferencia"} 
+                        onChange={() => handleCheck("transferencia")}
                         disabled={isFormLocked}
                         id="flexCheckDefault"
                       />
@@ -479,10 +476,15 @@ const Cart = () => {
 
               <div className="col-4 mt-4">
                 {preferenceId ? (
-                  methodPay.methodPay === "mercadopago" ? (
+                  methodPay === "mercadopago" ? (
                     <Wallet initialization={{ preferenceId: preferenceId }} />
-                  ) : methodPay.methodPay === "transferencia" ? (
-                    <p>cvu</p>
+                  ) : methodPay === "transferencia" ? (
+                    <div className="rounded shadow-sm d-flex flex-column data-transfer">
+                      <div className="container">
+                        <p>CVU: 0000003100247591174008</p>
+                        <p>ALIAS: tapones.earplugs</p>
+                      </div>
+                    </div>
                   ) : null
                 ) : (
                   <button
@@ -491,7 +493,7 @@ const Cart = () => {
                     disabled={
                       cart.length === 0 ||
                       !isFormComplete() ||
-                      methodPay.methodPay === undefined
+                      methodPay === null
                     }
                   >
                     Realizar Pago
