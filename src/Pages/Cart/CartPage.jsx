@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 import { useProductsContext } from "../../context/Context";
@@ -7,11 +7,19 @@ import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
 import "./CartPage.css";
 
 const Cart = () => {
-  const { cart, deleteItemCart, incrementQuantity, decreaseQuantity, total } =
-    useProductsContext();
+  const {
+    cart,
+    deleteItemCart,
+    incrementQuantity,
+    decreaseQuantity,
+    total,
+    priceShipp,
+    
+  } = useProductsContext();
   const [preferenceId, setPreferenceId] = useState(null);
   const [isFormLocked, setIsFormLocked] = useState(false);
   const [methodPay, setMethodPay] = useState(null);
+  const [shippingPrice, setShippingPrice] = useState(0);
   const [formData, setFormData] = useState({
     address: "",
     name: "",
@@ -29,6 +37,15 @@ const Cart = () => {
     email: "",
   });
 
+  useEffect(() => {
+    const matchingCity = priceShipp.find((p) => p.city === formData.city);
+    if (matchingCity) {
+      setShippingPrice(matchingCity.price);
+    } else {
+      setShippingPrice(0); // Por si la ciudad no está en la lista de precios
+    }
+  }, [formData.city, priceShipp]);
+
   const isFormComplete = () => {
     const complete = Object.values(formData).every(
       (field) => field.trim() !== ""
@@ -38,8 +55,7 @@ const Cart = () => {
   };
 
   console.log("cart recibe context de el state cart", cart);
-  console.log("metodo de pago inicial: deberia se nulo", methodPay)
-
+  console.log("metodo de pago inicial: deberia se nulo", methodPay);
 
   initMercadoPago("TEST-c2bacbf6-db71-473e-bf35-e163d1590c8c", {
     locale: "es-AR",
@@ -51,7 +67,7 @@ const Cart = () => {
       const items = cart.map((item) => ({
         title: item.titulo,
         quantity: item.quantity, // Asegúrate de tener una cantidad definida en cart
-        unit_price: item.precio,
+        unit_price: item.precio + shippingPrice ,
       }));
 
       const customerData = {
@@ -98,12 +114,13 @@ const Cart = () => {
       ...formData,
       [name]: value,
     });
-    
   };
+
+
 
   const handleCheck = (option) => {
     setMethodPay(option);
-    console.log("cambia el metodo de pago", methodPay)
+    console.log("cambia el metodo de pago", methodPay);
   };
 
   return (
@@ -212,14 +229,14 @@ const Cart = () => {
                     <div className="col d-flex justify-content-start">
                       <i class="bi bi-truck"> Envío</i>
                     </div>
-                    <div className="col d-flex justify-content-end">$0,00</div>
+                    <div className="col d-flex justify-content-end">${shippingPrice}</div>
                   </div>
                   <div className="total-cart-container row row-cols-2 my-3">
                     <div className="col d-flex justify-content-start">
                       <strong>Total</strong>
                     </div>
                     <div className="col d-flex justify-content-end">
-                      <strong>${total},00</strong>
+                      <strong>${total + shippingPrice},00</strong>
                     </div>
                   </div>
                 </div>
@@ -297,28 +314,12 @@ const Cart = () => {
                       onChange={handleInputChange}
                       disabled={isFormLocked}
                     >
-                      <option value="Caba">CABA</option>
-                      <option value="Vicente Lopez">Vicente Lopez</option>
-                      <option value="San Isidro">San Isidro</option>
-                      <option value="San Fernando">San Fernando</option>
-                      <option value="Tigre">Tigre</option>
-                      <option value="San Martin">San Martín</option>
-                      <option value="Tres de Febrero">Tres de Febrero</option>
-                      <option value="San Miguel">San Miguel</option>
-                      <option value="Hurlingham">Hurlingham</option>
-                      <option value="Moron">Morón</option>
-                      <option value="Ituzaingo">Ituzaingó</option>
-                      <option value="San Justo">San Justo</option>
-                      <option value="La Matanza sur">La Matanza Sur</option>
-                      <option value="Ezeiza">Ezeiza</option>
-                      <option value="Esteban Echeverria">
-                        Esteban Echeverria
-                      </option>
-                      <option value="Lomas de Zamora">Lomas de Zamora</option>
-                      <option value="Lanus">Lanus</option>
-                      <option value="Avellaneda">Avellaneda</option>
-                      <option value="Quilmes">Quilmes</option>
-                      <option value="Berazategui">Berazategui</option>
+                      {priceShipp.map((p) => (
+                        <option value={p.city} key={p.city}>
+                          {p.city}
+                        </option>
+                      ))}
+
                     </select>
                   </div>
                   <div className="col-4">
@@ -450,7 +451,7 @@ const Cart = () => {
                         class="form-check-input"
                         type="checkbox"
                         id="flexCheckDefault"
-                        checked={methodPay === "mercadopago"} 
+                        checked={methodPay === "mercadopago"}
                         onChange={() => handleCheck("mercadopago")}
                         disabled={isFormLocked}
                       />
@@ -462,7 +463,7 @@ const Cart = () => {
                       <input
                         class="form-check-input"
                         type="checkbox"
-                        checked={methodPay === "transferencia"} 
+                        checked={methodPay === "transferencia"}
                         onChange={() => handleCheck("transferencia")}
                         disabled={isFormLocked}
                         id="flexCheckDefault"

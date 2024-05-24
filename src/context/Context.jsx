@@ -14,6 +14,7 @@ export const ProductsProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
   const [total, setTotal] = useState([]);
   const [totalProductsInCart, setTotalProductsInCart] = useState([]);
+  const [priceShipp, setPriceShipp] = useState([]);
 
 
 
@@ -27,6 +28,19 @@ export const ProductsProvider = ({ children }) => {
         console.error("Error fetching products: ", error);
       });
   }, []);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:3000/api/shipping")
+      .then((response) => {
+        setPriceShipp(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching products: ", error);
+      });
+  }, []);
+
+  console.log("precio de los envios", priceShipp);
 
   useEffect(() => {
     // Cada vez que el carrito cambia, actualizamos el total
@@ -102,6 +116,8 @@ export const ProductsProvider = ({ children }) => {
         decreaseQuantity,
         total,
         totalProductsInCart,
+        priceShipp,
+        setTotal
       }}
     >
       {children}
