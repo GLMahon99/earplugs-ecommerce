@@ -10,6 +10,7 @@ import CartPage from "./Pages/Cart/CartPage";
 import ScrollTop from "./components/ScrollTop/ScrollTop";
 import AOS from "aos";
 import { ProductsProvider } from "./context/Context";
+import ScrollToTop from "./components/ScrollTop";
 
 
 
@@ -47,13 +48,14 @@ function App() {
       {isLoading ? (
         <div className="body-loader">
           <Preloader />
-          <Loading />
+          {/* <Loading /> */}
         </div>
       ) : (
         <>
           <ProductsProvider>
             <Header />
-            <Routes>
+            <ScrollToTop/>
+            <Routes >
               <Route path="/" element={<Home />} />
               <Route path="/products" element={<Products />} />
               <Route path="/products/:id" element={<ProductDetail />} />
