@@ -48,7 +48,7 @@ function App() {
       {isLoading ? (
         <div className="body-loader">
           <Preloader />
-          {/* <Loading /> */}
+          <Loading />
         </div>
       ) : (
         <>
@@ -66,6 +66,7 @@ function App() {
           </ProductsProvider>
         </>
       )}
+      
     </div>
   );
 }

@@ -5,14 +5,14 @@ import './Loading.css';
     return ( 
         <div class="loading-container position-absolute start-50 translate-middle mt-4">
         <div class="loading-text">
-            <span>C</span>
-            <span>A</span>
-            <span>R</span>
-            <span>G</span>
-            <span>A</span>
-            <span>N</span>
-            <span>D</span>
-            <span>O</span>
+            <span>E</span>
+            <span>a</span>
+            <span>r</span>
+            <span>p</span>
+            <span>l</span>
+            <span>u</span>
+            <span>g</span>
+            <span>s</span>
         </div>
     </div>
      );
