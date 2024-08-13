@@ -1,7 +1,8 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import axios from "axios";
 
-
+import moment from 'moment';
+import 'moment-timezone';
 
 
 
@@ -15,12 +16,18 @@ export const ProductsProvider = ({ children }) => {
   const [total, setTotal] = useState([]);
   const [totalProductsInCart, setTotalProductsInCart] = useState([]);
   const [priceShipp, setPriceShipp] = useState([]);
+  const [dateNow, setDateNow] = useState([]);
 
+  useEffect(() => {
+    // Obtener la fecha y hora actual en la zona horaria de Argentina
+    const now = moment().tz('America/Argentina/Buenos_Aires');
+    setDateNow(now.format('YYYY-MM-DD HH:mm:ss'));
+  }, []);
 
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/api/products")
+      .get("http://localhost:5000/api/products")
       .then((response) => {
         setProducts(response.data);
       })
@@ -31,7 +38,7 @@ export const ProductsProvider = ({ children }) => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/api/shipping")
+      .get("http://localhost:5000/api/shipping")
       .then((response) => {
         setPriceShipp(response.data);
       })
@@ -117,7 +124,8 @@ export const ProductsProvider = ({ children }) => {
         total,
         totalProductsInCart,
         priceShipp,
-        setTotal
+        setTotal,
+        dateNow
       }}
     >
       {children}

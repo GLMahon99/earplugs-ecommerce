@@ -13,7 +13,7 @@ const Clients = () => {
     const cargarFaq = async () => {
       
       const response = await axios.get(
-        `http://localhost:3000/api/images/farmacias`
+        `http://localhost:5000/api/images/farmacias`
       );
       setData(response.data);
       

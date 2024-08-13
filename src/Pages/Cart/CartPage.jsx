@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-
+import { Link } from "react-router-dom";
 import { useProductsContext } from "../../context/Context";
 import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
-
+import BagSvg from "../../components/BagSvg";
 import "./CartPage.css";
 
 const Cart = () => {
@@ -14,7 +14,7 @@ const Cart = () => {
     decreaseQuantity,
     total,
     priceShipp,
-    
+    dateNow,
   } = useProductsContext();
   const [preferenceId, setPreferenceId] = useState(null);
   const [isFormLocked, setIsFormLocked] = useState(false);
@@ -67,30 +67,38 @@ const Cart = () => {
       const items = cart.map((item) => ({
         title: item.titulo,
         quantity: item.quantity, // Asegúrate de tener una cantidad definida en cart
-        unit_price: item.precio + shippingPrice ,
+        unit_price: item.precio * item.quantity + shippingPrice,
       }));
 
       const customerData = {
         address: formData.address,
-        name: formData.name,
-        surname: formData.surname,
-        type_id: formData.type_id,
-        number_id: formData.number_id,
-        condition_iva: formData.condition_iva,
-        phone: formData.phone,
         floor: formData.floor,
         door: formData.door,
         cp: formData.cp,
         city: formData.city,
         type_of_housing: formData.type_of_housing,
         additional_information: formData.additional_information,
+        shippPrice: shippingPrice,
+        methodPay: methodPay,
+        total: total,
+        date: dateNow,
+      };
+
+      const clientData = {
+        name: formData.name,
+        surname: formData.surname,
+        type_id: formData.type_id,
+        number_id: formData.number_id,
+        condition_iva: formData.condition_iva,
         email: formData.email,
+        phone: formData.phone,
       };
 
       const res = await axios.post("http://localhost:8000/create_preference", {
         items,
         customerData,
-        methodPay,
+        clientData,
+        cart,
       });
       const { id } = res.data;
       return id;
@@ -115,8 +123,6 @@ const Cart = () => {
       [name]: value,
     });
   };
-
-
 
   const handleCheck = (option) => {
     setMethodPay(option);
@@ -199,7 +205,11 @@ const Cart = () => {
                     </div>
                   ))
                 ) : (
-                  <div>El carrito se encuentra vacío</div>
+                  <>
+                    <div>El carrito se encuentra vacío</div>
+                    <BagSvg />
+                    <Link to="/products">Agrega los productos</Link>
+                  </>
                 )}
               </div>
               <div className="col-lg-4 col-md-12 card-cart rounded shadow-sm">
@@ -229,7 +239,9 @@ const Cart = () => {
                     <div className="col d-flex justify-content-start">
                       <i class="bi bi-truck"> Envío</i>
                     </div>
-                    <div className="col d-flex justify-content-end">${shippingPrice}</div>
+                    <div className="col d-flex justify-content-end">
+                      ${shippingPrice}
+                    </div>
                   </div>
                   <div className="total-cart-container row row-cols-2 my-3">
                     <div className="col d-flex justify-content-start">
@@ -275,7 +287,7 @@ const Cart = () => {
                     <span className="d-block">Piso</span>
                     <input
                       name="floor"
-                      className="w-100 form-control"
+                      className="w-100 form-control px-2"
                       type="text"
                       value={formData.floor}
                       onChange={handleInputChange}
@@ -286,7 +298,7 @@ const Cart = () => {
                     <span className="d-block">Puerta</span>
                     <input
                       name="door"
-                      className="w-100 form-control"
+                      className="w-100 form-control px-2"
                       type="text"
                       value={formData.door}
                       onChange={handleInputChange}
@@ -319,7 +331,6 @@ const Cart = () => {
                           {p.city}
                         </option>
                       ))}
-
                     </select>
                   </div>
                   <div className="col-4">
@@ -361,6 +372,10 @@ const Cart = () => {
                     />
                   </div>
                 </div>
+                <p>
+                  *Todos los campos son obligatorios. En caso de no tener piso
+                  y/o puerta completar con "-"
+                </p>
               </div>
 
               <div className="col-lg-4 col-md-12   d-flex flex-column">
@@ -438,6 +453,7 @@ const Cart = () => {
                     </div>
                   </div>
                 </div>
+                <p>*Todos los campos son obligatorios.</p>
                 <div className="card-cart d-flex flex-column shadow-sm pb-3 rounded container">
                   <div className="title-card-cart">
                     <h6>Forma de pago</h6>
@@ -471,6 +487,7 @@ const Cart = () => {
                     </div>
                   </div>
                 </div>
+                <p>*Todos los campos son obligatorios.</p>
               </div>
 
               <div className="col-6 shipping-card "></div>
@@ -478,27 +495,49 @@ const Cart = () => {
               <div className="col-4 mt-4">
                 {preferenceId ? (
                   methodPay === "mercadopago" ? (
-                    <Wallet initialization={{ preferenceId: preferenceId }} />
-                  ) : methodPay === "transferencia" ? (
-                    <div className="rounded shadow-sm d-flex flex-column data-transfer">
-                      <div className="container">
-                        <p>CVU: 0000003100247591174008</p>
-                        <p>ALIAS: tapones.earplugs</p>
+                    <>
+                      <Wallet initialization={{ preferenceId: preferenceId }} />
+                      <div class="alert alert-warning" role="alert">
+                        Una vez realizado el pago recibirá por email la
+                        confirmacion de su compra, junto con la fecha de
+                        entrega. En caso de no realizar el pago dentro de las
+                        próximas 24hs. Su pedido sera cancelado.
                       </div>
-                    </div>
+                    </>
+                  ) : methodPay === "transferencia" ? (
+                    <>
+                      <div className="rounded shadow-sm d-flex flex-column data-transfer">
+                        <div className="container">
+                          <p>CVU: 0000003100247591174008</p>
+                          <p>ALIAS: tapones.earplugs</p>
+                        </div>
+                      </div>
+                      <div class="alert alert-warning" role="alert">
+                        Una vez realizado el pago recibirá por email la
+                        confirmacion de su compra, junto con la fecha de
+                        entrega. En caso de no realizar el pago dentro de las
+                        próximas 24hs. Su pedido sera cancelado.
+                      </div>
+                    </>
                   ) : null
                 ) : (
-                  <button
-                    onClick={handleBuy}
-                    className="btn button-pay"
-                    disabled={
-                      cart.length === 0 ||
-                      !isFormComplete() ||
-                      methodPay === null
-                    }
-                  >
-                    Realizar Pago
-                  </button>
+                  <>
+                    <button
+                      onClick={handleBuy}
+                      className="btn button-pay"
+                      disabled={
+                        cart.length === 0 ||
+                        !isFormComplete() ||
+                        methodPay === null
+                      }
+                    >
+                      Realizar Pago
+                    </button>
+                    <p>
+                      *Al completar todos los campos se habilitara el botón de
+                      pago
+                    </p>
+                  </>
                 )}
               </div>
             </div>

@@ -15,7 +15,7 @@ const Topbar = () => {
           </i>
         </div>
         <div className="col d-flex justify-content-center">
-          <p className="info-shipping-topbar">Envíos a CABA y GBA</p>
+        <i class="bi bi-truck"></i> <p className="info-shipping-topbar">Envíos a CABA y GBA en 24hs</p>
         </div>
         <div className="col social-links d-none d-md-flex d-flex justify-content-center align-items-center">
           <a href="/" className="twitter">

@@ -12,7 +12,7 @@ const Questions = () => {
     const cargarFaq = async () => {
       
       const response = await axios.get(
-        `http://localhost:3000/api/faq`
+        `http://localhost:5000/api/faq`
       );
       setData(response.data);
       
