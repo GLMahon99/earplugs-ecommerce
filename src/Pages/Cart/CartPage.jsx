@@ -47,12 +47,19 @@ const Cart = () => {
   }, [formData.city, priceShipp]);
 
   const isFormComplete = () => {
-    const complete = Object.values(formData).every(
-      (field) => field.trim() !== ""
-    );
+    const complete = Object.entries(formData).every(([key, value]) => {
+      // Ignorar los campos 'floor' y 'door'
+      if (key === 'floor' || key === 'door') {
+        return true;
+      }
+      // Verificar que los demás campos no estén vacíos
+      return value.trim() !== "";
+    });
+    
     console.log("Form complete:", complete, formData); // Añadido para depurar
     return complete;
   };
+  
 
   console.log("cart recibe context de el state cart", cart);
   console.log("metodo de pago inicial: deberia se nulo", methodPay);
@@ -206,9 +213,12 @@ const Cart = () => {
                   ))
                 ) : (
                   <>
-                    <div>El carrito se encuentra vacío</div>
-                    <BagSvg />
-                    <Link to="/products">Agrega los productos</Link>
+                    <div className="py-2">
+                      <p>El carrito se encuentra vacío</p>
+                      <BagSvg/>
+                    <Link to="/products">Agregue productos</Link>
+                    </div>
+                    
                   </>
                 )}
               </div>
@@ -373,8 +383,7 @@ const Cart = () => {
                   </div>
                 </div>
                 <p>
-                  *Todos los campos son obligatorios. En caso de no tener piso
-                  y/o puerta completar con "-"
+                  *Todos los campos son obligatorios.
                 </p>
               </div>
 

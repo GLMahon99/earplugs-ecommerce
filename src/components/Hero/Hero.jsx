@@ -18,7 +18,7 @@ const Hero = () => {
                 </div>
               </div>
               <div className="d-flex col-lg-6 order-1 order-lg-2 justify-content-center">
-                <img src="https://i.ibb.co/KGysFMW/inc-2.png" className="w-75" alt="" data-aos="zoom-out" data-aos-delay="100" />
+                <img src="https://i.ibb.co/KGysFMW/inc-2.png" className="w-75 img-hero" alt="" data-aos="zoom-out" data-aos-delay="100" />
               </div>
             </div>
           </div>
