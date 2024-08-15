@@ -48,7 +48,7 @@ const Contact = () => {
     try {
       // Envia el correo electrónico utilizando EmailJS
       await emailjs.sendForm(
-        "service_zhxfdzm",
+        "service_knpd396",
         "template_ykeoo2c",
         e.target,
         "TzgSyFWDddnrBKKph"
