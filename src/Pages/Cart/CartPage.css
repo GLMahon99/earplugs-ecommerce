@@ -1,3 +1,33 @@
+@media (max-width: 576px) {
+    /* Reglas CSS para pantallas pequeñas */
+    .title-input-shipp {
+      font-size: 12px;
+    }
+    .quantity-selector{
+        margin-top: 15px;
+    }
+  }
+
+@media (max-width: 992px) {
+   .products-cart, .shipping-card, .resume-card {
+        margin-bottom: 10px;
+        width: 95%;
+    }
+}
+
+@media (min-width:992px) {
+    .products-cart, .shipping-card{
+        margin-right: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .item-cart-product{
+        font-size: 13px;
+    }
+}
+
+
 #cartPage{
     height: 100%;
     padding-bottom: 100px;
@@ -15,9 +45,7 @@
     margin-bottom: 8px;
 }
 
-.products-cart, .shipping-card{
-    margin-right: 30px;
-}
+
 
 .item-cart-product{
     border-bottom: 1px solid #e7e7e7;

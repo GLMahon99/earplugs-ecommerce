@@ -12,7 +12,7 @@ const Questions = () => {
     const cargarFaq = async () => {
       
       const response = await axios.get(
-        `http://localhost:5000/api/faq`
+        `https://earplugs-backend.onrender.com/api/faq`
       );
       setData(response.data);
       

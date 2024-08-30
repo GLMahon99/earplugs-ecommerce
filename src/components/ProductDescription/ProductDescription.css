@@ -1,7 +1,10 @@
-.description-area {
-    width: 75%;
-    
+@media (max-width: 576px){
+    .description-text-area , .indicaciones-text-area{
+        font-size: 12px;
+    }
 }
+
+
 .description-text-area , .indicaciones-text-area{
     width: 85%;
 }

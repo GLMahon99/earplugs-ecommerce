@@ -13,7 +13,7 @@ const Clients = () => {
     const cargarFaq = async () => {
       
       const response = await axios.get(
-        `http://localhost:5000/api/images/farmacias`
+        `https://earplugs-backend.onrender.com/api/images/farmacias`
       );
       setData(response.data);
       

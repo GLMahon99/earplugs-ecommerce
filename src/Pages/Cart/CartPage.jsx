@@ -20,6 +20,7 @@ const Cart = () => {
   const [isFormLocked, setIsFormLocked] = useState(false);
   const [methodPay, setMethodPay] = useState(null);
   const [shippingPrice, setShippingPrice] = useState(0);
+  const [render, setRender] = useState(false);
   const [formData, setFormData] = useState({
     address: "",
     name: "",
@@ -64,7 +65,7 @@ const Cart = () => {
   console.log("cart recibe context de el state cart", cart);
   console.log("metodo de pago inicial: deberia se nulo", methodPay);
 
-  initMercadoPago("TEST-c2bacbf6-db71-473e-bf35-e163d1590c8c", {
+  initMercadoPago("APP_USR-f2e29690-4159-46d0-ae30-4e220b7cce6c", {
     locale: "es-AR",
   });
 
@@ -121,6 +122,13 @@ const Cart = () => {
       setIsFormLocked(true);
       console.log("este es el preference de mp", id);
     }
+    if (!render) {
+      // Espera 15 segundos antes de redireccionar
+      setTimeout(() => {
+        window.location.href = "/";
+      }, 15000);
+      setRender(true);
+    }
   };
 
   const handleInputChange = (e) => {
@@ -154,75 +162,78 @@ const Cart = () => {
                 </div>
                 {/* hacer el map */}
                 {cart && cart.length > 0 ? (
-                  cart.map((p) => (
-                    <div className="item-cart-product row justify-content-center">
-                      <div className="col-2">
-                        <img
-                          src={p.img}
-                          alt="product-img"
-                          className="img-itemCart"
-                        />
-                      </div>
-                      <div className="col-6 d-flex flex-column justify-content-start">
-                        <p>
-                          {p.titulo}
-                          <button
-                            onClick={() => deleteItemCart(p.producto_id)}
-                            disabled={isFormLocked}
-                            className="button-delete-cart"
-                          >
-                            <i className="bi bi-trash button-delete-product mx-2">
-                              Eliminar
-                            </i>
-                          </button>
-                        </p>
-                      </div>
-                      <div className="col-2 quantity-selector row row-cols-3 rounded">
-                        <div className="col">
-                          <button
-                            onClick={() =>
-                              decreaseQuantity(p.producto_id, p.quantity)
-                            }
-                            className="button-quantity "
-                            disabled={isFormLocked}
-                          >
-                            <i class="bi bi-bag-dash"></i>
-                          </button>
-                        </div>
-                        <div className="col">
-                          <p className="text-center quantity-selector-cart">
-                            {p.quantity}
-                          </p>
-                        </div>
-                        <div className="col">
-                          <button
-                            onClick={() =>
-                              incrementQuantity(p.producto_id, p.quantity)
-                            }
-                            className="button-quantity"
-                            disabled={isFormLocked}
-                          >
-                            <i class="bi bi-bag-plus"></i>
-                          </button>
-                        </div>
-                      </div>
-                      <div className="col-2 d-flex justify-content-end">
-                        ${p.precio},00
-                      </div>
-                    </div>
-                  ))
-                ) : (
-                  <>
-                    <div className="py-2">
-                      <p>El carrito se encuentra vacío</p>
-                      <BagSvg/>
-                    <Link to="/products">Agregue productos</Link>
-                    </div>
-                    
-                  </>
-                )}
+  cart.map((p) => {
+    console.log(`Tipo de precio para el producto ${p.titulo}:`, typeof p.precio); // Este es el nuevo console.log
+    return (
+      <div className="item-cart-product row justify-content-center">
+        <div className="col-3 col-sm-2">
+          <img
+            src={p.img}
+            alt="product-img"
+            className="img-itemCart"
+          />
+        </div>
+        <div className="col-9 col-sm-6 d-flex flex-column justify-content-start">
+          <p>
+            {p.titulo}
+            <button
+              onClick={() => deleteItemCart(p.producto_id)}
+              disabled={isFormLocked}
+              className="button-delete-cart"
+            >
+              <i className="bi bi-trash button-delete-product mx-2">
+                Eliminar
+              </i>
+            </button>
+          </p>
+        </div>
+        <div className="col-sm-2 col-4 quantity-selector row row-cols-3 rounded">
+          <div className="col">
+            <button
+              onClick={() =>
+                decreaseQuantity(p.producto_id, p.quantity)
+              }
+              className="button-quantity"
+              disabled={isFormLocked}
+            >
+              <i class="bi bi-bag-dash"></i>
+            </button>
+          </div>
+          <div className="col">
+            <p className="text-center quantity-selector-cart">
+              {p.quantity}
+            </p>
+          </div>
+          <div className="col">
+            <button
+              onClick={() =>
+                incrementQuantity(p.producto_id, p.quantity)
+              }
+              className="button-quantity"
+              disabled={isFormLocked}
+            >
+              <i class="bi bi-bag-plus"></i>
+            </button>
+          </div>
+        </div>
+        <div className="col-sm-2 col-8 d-flex justify-content-end">
+          ${p.precio},00
+        </div>
+      </div>
+    );
+  })
+) : (
+  <>
+    <div className="py-2">
+      <p>El carrito se encuentra vacío</p>
+      <BagSvg/>
+      <Link to="/products">Agregue productos</Link>
+    </div>
+  </>
+)}
+
               </div>
-              <div className="col-lg-4 col-md-12 card-cart rounded shadow-sm">
+              <div className="col-lg-4 col-md-12 card-cart rounded shadow-sm resume-card">
                 <div className="title-card-cart">
                   <h6>Resumen de compra</h6>
                 </div>
@@ -241,6 +252,7 @@ const Cart = () => {
                           ${p.precio * p.quantity},00
                         </div>
                       </div>
+                      
                     ))
                   ) : (
                     <></>
@@ -250,7 +262,7 @@ const Cart = () => {
                       <i class="bi bi-truck"> Envío</i>
                     </div>
                     <div className="col d-flex justify-content-end">
-                      ${shippingPrice}
+                      ${shippingPrice},00
                     </div>
                   </div>
                   <div className="total-cart-container row row-cols-2 my-3">
@@ -264,13 +276,13 @@ const Cart = () => {
                 </div>
               </div>
 
-              <div className="col-lg-6 col-md-12 card-cart rounded shipping-card  shadow-sm mt-4 pb-4">
+              <div className="col-lg-6 col-md-12 card-cart rounded shipping-card  shadow-sm mt-4 pb-1">
                 <div className="title-card-cart mb-3">
                   <h6>Datos de Envío</h6>
                 </div>
                 <div className="row mb-3">
                   <div className="col-8">
-                    <span className="d-block">Dirección</span>
+                    <span className="d-block title-input-shipp">Dirección</span>
                     <input
                       name="address"
                       className="w-100 form-control"
@@ -281,7 +293,7 @@ const Cart = () => {
                     />
                   </div>
                   <div className="col-4">
-                    <span className="d-block">Teléfono</span>
+                    <span className="d-block title-input-shipp">Teléfono</span>
                     <input
                       name="phone"
                       className="w-100 form-control"
@@ -294,7 +306,7 @@ const Cart = () => {
                 </div>
                 <div className="row mb-3">
                   <div className="col-1">
-                    <span className="d-block">Piso</span>
+                    <span className="d-block title-input-shipp">Piso</span>
                     <input
                       name="floor"
                       className="w-100 form-control px-2"
@@ -305,7 +317,7 @@ const Cart = () => {
                     />
                   </div>
                   <div className="col-1">
-                    <span className="d-block">Puerta</span>
+                    <span className="d-block title-input-shipp">Puerta</span>
                     <input
                       name="door"
                       className="w-100 form-control px-2"
@@ -316,7 +328,7 @@ const Cart = () => {
                     />
                   </div>
                   <div className="col-2">
-                    <span className="d-block">CP</span>
+                    <span className="d-block title-input-shipp text-center">CP</span>
                     <input
                       name="cp"
                       className="w-100 form-control"
@@ -327,7 +339,7 @@ const Cart = () => {
                     />
                   </div>
                   <div className="col-4">
-                    <span className="d-block">Localidad</span>
+                    <span className="d-block title-input-shipp">Localidad</span>
                     <select
                       className="w-100 form-select"
                       name="city"
@@ -344,7 +356,7 @@ const Cart = () => {
                     </select>
                   </div>
                   <div className="col-4">
-                    <span className="d-block">Email</span>
+                    <span className="d-block title-input-shipp">Email</span>
                     <input
                       name="email"
                       className="w-100 form-control"
@@ -357,7 +369,7 @@ const Cart = () => {
                 </div>
                 <div className="row">
                   <div className="col-4">
-                    <span className="d-block">Tipo de vivienda</span>
+                    <span className="d-block title-input-shipp">Tipo de vivienda</span>
                     <select
                       className="w-100 form-select"
                       name="type_of_housing"
@@ -371,7 +383,7 @@ const Cart = () => {
                     </select>
                   </div>
                   <div className="col-8">
-                    <span className="d-block">Observación</span>
+                    <span className="d-block title-input-shipp">Observación</span>
                     <input
                       name="additional_information"
                       className="w-100 form-control"
@@ -499,9 +511,9 @@ const Cart = () => {
                 <p>*Todos los campos son obligatorios.</p>
               </div>
 
-              <div className="col-6 shipping-card "></div>
+              <div className="col-12 col-sm-6 shipping-card "></div>
 
-              <div className="col-4 mt-4">
+              <div className="col-12 col-sm-4 mt-4">
                 {preferenceId ? (
                   methodPay === "mercadopago" ? (
                     <>

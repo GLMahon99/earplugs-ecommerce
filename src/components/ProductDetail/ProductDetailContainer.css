@@ -1,3 +1,26 @@
+@media (max-width: 992px){
+    .product-price{
+        font-size: 20px;
+    }
+}
+@media (min-width: 992px){
+    .product-price{
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 768px){
+    .img-product-detail{
+        width: 100%;
+    }
+}
+@media (min-width: 768px){
+    .img-product-detail{
+        width: 80%;
+    }
+}
+
+
 .title-product {
     color: var(--color-primary);
 }
@@ -12,7 +35,7 @@
 
 .product-price{
     color: var(--color-primary);
-    font-size: 30px;
+    /* font-size: 30px; */
 }
 
 .product-stock{

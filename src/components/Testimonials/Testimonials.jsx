@@ -12,7 +12,7 @@ useEffect(() => {
   const cargarTestimonio = async () => {
     
     const response = await axios.get(
-      `http://localhost:5000/api/testimonials`
+      `https://earplugs-backend.onrender.com/api/testimonials`
     );
     setData(response.data);
     

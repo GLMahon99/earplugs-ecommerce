@@ -36,9 +36,9 @@ const ProductDetailContainer = ({ product }) => {
             {product.item11 ? <li>{product.item11}</li> : <></>}
             {product.item12 ? <li>{product.item12}</li> : <></>}
           </ul>
-          <span className="alert-buy-product rounded">
+          {/* <span className="alert-buy-product rounded">
             Unidad de venta 12 cajas.
-          </span>
+          </span> */}
           <div className="my-4 row row-cols-3 d-flex align-items-center">
             <div className="col product-price">${product.precio},00</div>
             <div className="col d-flex flex-column">

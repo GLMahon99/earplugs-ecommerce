@@ -13,7 +13,7 @@ export const useProductsContext = () => useContext(ProductsContext);
 export const ProductsProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
-  const [total, setTotal] = useState([]);
+  const [total, setTotal] = useState(0);
   const [totalProductsInCart, setTotalProductsInCart] = useState([]);
   const [priceShipp, setPriceShipp] = useState([]);
   const [dateNow, setDateNow] = useState([]);
@@ -27,7 +27,7 @@ export const ProductsProvider = ({ children }) => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/products")
+      .get("https://earplugs-backend.onrender.com/api/products")
       .then((response) => {
         setProducts(response.data);
       })
@@ -38,7 +38,7 @@ export const ProductsProvider = ({ children }) => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/shipping")
+      .get("https://earplugs-backend.onrender.com/api/shipping")
       .then((response) => {
         setPriceShipp(response.data);
       })
