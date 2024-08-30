@@ -102,7 +102,7 @@ const Cart = () => {
         phone: formData.phone,
       };
 
-      const res = await axios.post("http://localhost:8000/create_preference", {
+      const res = await axios.post("https://integration-mp-earplugs.onrender.com/create_preference", {
         items,
         customerData,
         clientData,
