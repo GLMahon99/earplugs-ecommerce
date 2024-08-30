@@ -77,7 +77,7 @@ const Contact = () => {
         <div className="section-header">
           <h2>Contacto</h2>
           <p>
-            ¡Estamos aquí para ti! Ponte en contacto con nosotros y permítenos
+            ¡Estamos aquí para vos! Ponete en contacto con nosotros y permítenos
             brindarte la atención personalizada que necesitas.
           </p>
         </div>
