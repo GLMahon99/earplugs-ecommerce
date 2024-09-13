@@ -305,7 +305,7 @@ const Cart = () => {
                   </div>
                 </div>
                 <div className="row mb-3">
-                  <div className="col-1">
+                  <div className="col-lg-1 col-4">
                     <span className="d-block title-input-shipp">Piso</span>
                     <input
                       name="floor"
@@ -316,7 +316,7 @@ const Cart = () => {
                       disabled={isFormLocked}
                     />
                   </div>
-                  <div className="col-1">
+                  <div className="col-lg-1 col-4">
                     <span className="d-block title-input-shipp">Puerta</span>
                     <input
                       name="door"
@@ -327,7 +327,7 @@ const Cart = () => {
                       disabled={isFormLocked}
                     />
                   </div>
-                  <div className="col-2">
+                  <div className="col-lg-1 col-4">
                     <span className="d-block title-input-shipp text-center">CP</span>
                     <input
                       name="cp"
@@ -338,7 +338,7 @@ const Cart = () => {
                       disabled={isFormLocked}
                     />
                   </div>
-                  <div className="col-4">
+                  <div className="col-5">
                     <span className="d-block title-input-shipp">Localidad</span>
                     <select
                       className="w-100 form-select"
@@ -355,7 +355,7 @@ const Cart = () => {
                       ))}
                     </select>
                   </div>
-                  <div className="col-4">
+                  <div className="col-lg-4 col-7">
                     <span className="d-block title-input-shipp">Email</span>
                     <input
                       name="email"
