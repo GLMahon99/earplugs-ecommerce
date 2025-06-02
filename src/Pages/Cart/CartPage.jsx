@@ -126,7 +126,7 @@ const Cart = () => {
       // Espera 15 segundos antes de redireccionar
       setTimeout(() => {
         window.location.href = "/";
-      }, 15000);
+      }, 40000);
       setRender(true);
     }
   };
