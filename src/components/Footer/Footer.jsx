@@ -1,7 +1,7 @@
 import React from "react";
 import "./Footer.css";
 import { NavLink } from "react-router-dom";
-import { Location } from "react-router-dom";
+
 
 const Footer = () => {
   return (
@@ -18,17 +18,12 @@ const Footer = () => {
               del ruido. Evita infecciones y dolor por el ingreso de agua.
             </p>
             <div className="social-links d-flex mt-4">
-              <a href="#" className="twitter">
-                <i class="bi bi-twitter-x"></i>
-              </a>
+
               <a href="https://www.facebook.com/EarplugsTapones" Target="_blank" className="facebook">
                 <i className="bi bi-facebook"></i>
               </a>
               <a href="https://www.instagram.com/earplugs_tjm/" Target="_blank" className="instagram">
                 <i className="bi bi-instagram"></i>
-              </a>
-              <a href="#" className="linkedin">
-                <i className="bi bi-linkedin"></i>
               </a>
             </div>
           </div>

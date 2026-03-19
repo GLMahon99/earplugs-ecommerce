@@ -16,10 +16,6 @@ const ProductDescription = ({ description, indications, comments, classification
   });
 
 
-  const handleTabClick = (tab) => {
-    setActiveTab(tab);
-  };
-
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };

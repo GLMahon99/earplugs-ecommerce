@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const ProductDetailContainer = ({ product }) => {
   const [quantity, setQuantity] = useState(1);
   const [alertAddToCart, setAlertAddToCart] = useState(false);
-  const { addToCart, canAddToCart, user } = useProductsContext();
+  const { addToCart, user } = useProductsContext();
 
   return (
     <div className="container" id="productDetail-container" data-aos="fade-up">
@@ -17,14 +17,14 @@ const ProductDetailContainer = ({ product }) => {
             <img src={product.img} alt={product.titulo} className="img-fluid img-product-detail" />
           </div>
         </div>
-        
+
         <div className="col-12 col-md-6" data-aos="fade-left" data-aos-delay="400">
           <div className="product-info-wrapper pe-md-4">
             <h5 className="code">{product.codigo}</h5>
             <h1 className="title-product">{product.titulo}</h1>
-            
+
             <div className="divider my-4" style={{ height: '2px', background: '#f0f0f0', width: '60px' }}></div>
-            
+
             <ul className="items-product">
               {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map(num => (
                 product[`item${num}`] && <li key={num}>{product[`item${num}`]}</li>
@@ -40,7 +40,7 @@ const ProductDetailContainer = ({ product }) => {
                     {product.stock} unidades disponibles
                   </div>
                 </div>
-                
+
                 <div className="col-12 col-sm-6">
                   <label className="form-label small fw-bold text-muted">Cantidad</label>
                   <div className="d-flex align-items-center">
