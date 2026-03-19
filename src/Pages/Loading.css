@@ -1,4 +1,9 @@
-
+@media (max-width: 480px) {
+  /* Reglas CSS para pantallas pequeñas */
+  .loading-container{
+    display: none;
+  }
+}
 
 .loading-container {
     width: 100%;
@@ -47,7 +52,7 @@
   }
   
   .loading-text {
-    font-size: 1vw;
+    font-size: 2vw;
     line-height: 20px;
     letter-spacing: 1px;
     margin-bottom: 32px;

@@ -1,0 +1,34 @@
+#transfer-container #datos {
+  list-style: none;
+  padding: 0;
+}
+
+.divider {
+  height: 1px;
+  background-color: rgb(218, 218, 218);
+}
+
+#datos span {
+  font-weight: bold;
+}
+
+
+#transfer-container .card-transfer {
+  background-color: var(--color-primary);
+  color: #fff;
+}
+
+#transfer-container {
+  width: 75%;
+}
+
+.button-wsp{
+    width: 50%;
+}
+
+@media (max-width: 992px) {
+  #transfer-container, .button-wsp  {
+    width: 100%;
+  }
+  
+}

@@ -1,9 +1,9 @@
 import React from 'react';
 import ProductsItem from './ProductsItem';
 
-const ProductsList = ({dataProducts}) => {
+const ProductsList = ({filteredProducts}) => {
     return ( <>
-    {dataProducts.map((item) => <ProductsItem  id={item.producto_id}
+    {filteredProducts.map((item) => <ProductsItem  id={item.producto_id}
     title={item.titulo} imagen={item.img}
     /> )}
     </>

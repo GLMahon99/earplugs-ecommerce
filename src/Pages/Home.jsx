@@ -7,6 +7,7 @@ import Hero from '../components/Hero/Hero';
 import Questions from '../components/Questions/Questions';
 // import Team from '../components/Team/Team';
 import Testimonials from '../components/Testimonials/Testimonials';
+import ScrollTop from '../components/ScrollTop/ScrollTop';
 
 
 import { useLocation } from 'react-router-dom';
@@ -45,6 +46,7 @@ const Home = () => {
         <Questions/>
         {/* <Team/> */}
         <Contact/>
+        <ScrollTop />
       </main>
       
     </> );
