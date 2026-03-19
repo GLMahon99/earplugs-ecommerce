@@ -5,13 +5,16 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './firebase/firebase';
 import { BrowserRouter } from 'react-router-dom';
+import { ProductsProvider } from './context/Context';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-    <App />
-    </BrowserRouter>
+    <ProductsProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </ProductsProvider>
   </React.StrictMode>
 );
 

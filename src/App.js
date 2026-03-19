@@ -1,69 +1,134 @@
+import "./App.css";
+import Home from "./Pages/Home";
+import Loading from "./Pages/Loading";
+import Preloader from "./Pages/Preloader";
+import ProductDetail from "./Pages/ProductDetail/ProductDetail";
+import Products from "./Pages/Products/Products";
+import Footer from "./components/Footer/Footer";
+import Header from "./components/Header/Header";
+import CartPage from "./Pages/Cart/CartPage";
+import ScrollTop from "./components/ScrollTop/ScrollTop";
+import AOS from "aos";
+import LoginOverlay from "./components/LoginOverlay/LoginOverlay";
+import { SectionLoginRegister } from "./Pages/SectionLoginRegister/SectionLoginRegister";
+import { useProductsContext } from "./context/Context";
+import "aos/dist/aos.css";
 
-import './App.css';
-import Home from './Pages/Home';
-import Loading from './Pages/Loading';
-import Preloader from './Pages/Preloader';
-import ProductDetail from './Pages/ProductDetail/ProductDetail';
-import Products from './Pages/Products/Products';
-import Footer from './components/Footer/Footer';
-import Header from './components/Header/Header';
-import ScrollTop from './components/ScrollTop/ScrollTop';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-
-import React, { useState,useEffect } from 'react';
-
-
-import {Routes, Route } from "react-router-dom";
-
-
-
+import React, { useState, useEffect } from "react";
+import { Routes, Route, useNavigate } from "react-router-dom";
 
 function App() {
- 
-  const [isLoading, setIsLoading] = useState(true);
+  const { showLoginModal, setShowLoginModal, user, login, loading } =
+    useProductsContext();
 
+  const [showLoader, setShowLoader] = useState(true);
+  const navigate = useNavigate();
+
+  // Loader control
   useEffect(() => {
-    // Simula el tiempo de carga de la página durante 2 segundos
-    setTimeout(() => {
-      setIsLoading(false);
-      aos_init();
-    }, 3000);
-  }, []);
+    if (!loading) {
+      const timer = setTimeout(() => {
+        setShowLoader(false);
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [loading]);
 
+  // Mostrar overlay login si no hay usuario
+  useEffect(() => {
+    if (!user) {
+      setShowLoginModal(true);
+    }
+  }, [user, setShowLoginModal]);
 
-  function aos_init() {
+  // Init AOS
+  useEffect(() => {
     AOS.init({
       duration: 1000,
-      easing: 'ease-in-out',
+      easing: "ease-in-out",
       once: true,
-      mirror: false
+      mirror: false,
     });
-  }
-  window.addEventListener('load', () => {
-    aos_init();
-  });
+  }, []);
+
+  const handleLogin = () => {
+    const dummyUser = { name: "Gastón", email: "ejemplo@mail.com" };
+    login(dummyUser);
+    setShowLoginModal(false);
+  };
+
+  const handleRedirect = () => {
+    setShowLoginModal(false);
+    navigate("/LoginRegister");
+  };
+
   return (
     <div className="App">
-      <Header /> 
-     
-      {isLoading ? (<div className='body-loader'>
-        <Preloader /> 
-        <Loading/>
+      {showLoader ? (
+        <div className="body-loader">
+          <Preloader />
+          <Loading />
         </div>
       ) : (
         <>
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/products" element={<Products />} />
-            <Route path="/products/:categoryId" element={<Products />} />
-            <Route path="/product/:detalleId" element={<ProductDetail />} />
+            <Route
+              path="/"
+              element={
+                <>
+                  <Header />
+                  <ScrollTop />
+                  <Home />
+                  <Footer />
+                </>
+              }
+            />
+            <Route
+              path="/products"
+              element={
+                <>
+                  <Header />
+                  <ScrollTop />
+                  <Products />
+                  <Footer />
+                </>
+              }
+            />
+            <Route
+              path="/products/:id"
+              element={
+                <>
+                  <Header />
+                  <ScrollTop />
+                  <ProductDetail />
+                  <Footer />
+                </>
+              }
+            />
+            <Route
+              path="/CartPage"
+              element={
+                <>
+                  <Header />
+                  <ScrollTop />
+                  <CartPage />
+                  <Footer />
+                </>
+              }
+            />
+            <Route path="/LoginRegister" element={<SectionLoginRegister />} />
           </Routes>
-          <ScrollTop />
-          <Footer />
+
+          {/* Overlay de login solo si no hay sesión */}
+          {!user && showLoginModal && (
+            <LoginOverlay
+              onLogin={handleLogin}
+              onRedirect={handleRedirect}
+              onClose={() => setShowLoginModal(false)}
+            />
+          )}
         </>
       )}
-      
     </div>
   );
 }
