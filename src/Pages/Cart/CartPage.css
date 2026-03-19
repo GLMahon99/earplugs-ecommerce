@@ -16,22 +16,18 @@
     
 }
 
-@media (min-width:992px) {
-    .products-cart, .shipping-card{
+@media (min-width: 992px) {
+    .products-cart, .shipping-card {
         margin-right: 30px;
     }
-    .button-pay {
-    width: 50% !important;
-    display: block !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-  }
-  #payment-actions{
-    width: 50%;
-  }
-  #transfer-container{
-    width: 100%;
-  }
+    #transfer-container {
+        width: 100%;
+    }
+    #payment-actions {
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
 @media (max-width: 768px) {
@@ -78,16 +74,56 @@
     font-size: small;
 }
 
-.button-pay{
-    width: 100%;
-    background-color: var(--color-primary);
-    color: rgba(255, 255, 255, 0.6);
+#payment-actions {
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  border: 1px solid #e8ecef;
+  border-radius: 20px;
+  padding: 2rem 2.5rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
 }
 
-.button-pay:hover{
-    background-color: var(--color-tertiary);
-    color: #fff;
+#payment-actions p {
+  color: #95a5a6;
+  font-size: 0.82rem;
+  margin: 0;
+  font-style: italic;
 }
+
+.button-pay {
+  width: 100%;
+  max-width: 380px;
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+  color: #ffffff;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.5px;
+  transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+  box-shadow: 0 6px 20px rgba(44, 62, 80, 0.25);
+}
+
+.button-pay:hover:not(:disabled) {
+  background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+  box-shadow: 0 8px 25px rgba(52, 152, 219, 0.4);
+  transform: translateY(-3px);
+  color: #fff;
+}
+
+.button-pay:disabled {
+  background: linear-gradient(135deg, #bdc3c7 0%, #95a5a6 100%);
+  box-shadow: none;
+  cursor: not-allowed;
+  color: #fff;
+  opacity: 0.7;
+}
+
 
 .quantity-selector{
     border: 1px solid #e7e7e7;
