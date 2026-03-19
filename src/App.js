@@ -11,6 +11,7 @@ import ScrollTop from "./components/ScrollTop/ScrollTop";
 import AOS from "aos";
 import LoginOverlay from "./components/LoginOverlay/LoginOverlay";
 import { SectionLoginRegister } from "./Pages/SectionLoginRegister/SectionLoginRegister";
+import UserProfile from "./Pages/UserProfile/UserProfile";
 import { useProductsContext } from "./context/Context";
 import "aos/dist/aos.css";
 
@@ -117,6 +118,16 @@ function App() {
               }
             />
             <Route path="/LoginRegister" element={<SectionLoginRegister />} />
+            <Route
+              path="/profile"
+              element={
+                <>
+                  <Header />
+                  <UserProfile />
+                  <Footer />
+                </>
+              }
+            />
           </Routes>
 
           {/* Overlay de login solo si no hay sesión */}
