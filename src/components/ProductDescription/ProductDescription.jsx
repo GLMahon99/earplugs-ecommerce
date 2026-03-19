@@ -15,7 +15,7 @@ const ProductDescription = ({ description, indications, comments, classification
     comment: ""
   });
 
-  
+
   const handleTabClick = (tab) => {
     setActiveTab(tab);
   };
@@ -44,9 +44,8 @@ const ProductDescription = ({ description, indications, comments, classification
       <ul className="nav nav-tabs mt-5">
         <li className="nav-item">
           <a
-            className={`nav-link nav-link-description ${
-              activeTab === "Descripcion" ? "active" : ""
-            }`}
+            className={`nav-link nav-link-description ${activeTab === "Descripcion" ? "active" : ""
+              }`}
             href="#Descripcion"
             onClick={() => setActiveTab("Descripcion")}
           >
@@ -55,9 +54,8 @@ const ProductDescription = ({ description, indications, comments, classification
         </li>
         <li className="nav-item">
           <a
-            className={`nav-link nav-link-description ${
-              activeTab === "indicaciones" ? "active" : ""
-            }`}
+            className={`nav-link nav-link-description ${activeTab === "indicaciones" ? "active" : ""
+              }`}
             href="#indicaciones"
             onClick={() => setActiveTab("indicaciones")}
           >
@@ -66,9 +64,8 @@ const ProductDescription = ({ description, indications, comments, classification
         </li>
         <li className="nav-item">
           <a
-            className={`nav-link nav-link-description ${
-              activeTab === "comments" ? "active" : ""
-            }`}
+            className={`nav-link nav-link-description ${activeTab === "comments" ? "active" : ""
+              }`}
             href="#comments"
             onClick={() => setActiveTab("comments")}
           >
@@ -79,25 +76,23 @@ const ProductDescription = ({ description, indications, comments, classification
 
       <div className="tab-content py-4 container" id="ex1-content">
         <div
-          className={`tab-pane fade ${
-            activeTab === "Descripcion" ? "show active" : ""
-          }`}
+          className={`tab-pane fade ${activeTab === "Descripcion" ? "show active" : ""
+            }`}
           id="Descripcion"
           role="tabpanel"
           aria-labelledby="ex1-tab-1"
         >
-          <Description  description={description}/>
+          <Description description={description} />
         </div>
         <div
-          className={`tab-pane fade ${
-            activeTab === "indicaciones" ? "show active" : ""
-          }`}
+          className={`tab-pane fade ${activeTab === "indicaciones" ? "show active" : ""
+            }`}
           id="indicaciones"
           role="tabpanel"
           aria-labelledby="ex1-tab-2"
         >
           <div>
-            <Indications  indications={indications}/>
+            <Indications indications={indications} />
           </div>
         </div>
         <div
@@ -124,8 +119,8 @@ const ProductDescription = ({ description, indications, comments, classification
                 </div>
               </div>
               <div className="container">
-                
-                  <Comments comments={comments}/>
+
+                <Comments comments={comments} />
               </div>
             </div>
             <div className="col">
@@ -171,11 +166,11 @@ const ProductDescription = ({ description, indications, comments, classification
                 ></textarea>
               </div>
               <div>
-              {isSent && (
-        <div className="alert alert-success mt-3" role="alert">
-          Gracias por su comentario. ¡Valoramos su opinión!
-        </div>
-      )}
+                {isSent && (
+                  <div className="alert alert-success mt-3" role="alert">
+                    Gracias por su comentario. ¡Valoramos su opinión!
+                  </div>
+                )}
                 <button
                   type="submit"
                   className="btn btn-primary"
@@ -191,14 +186,14 @@ const ProductDescription = ({ description, indications, comments, classification
                     "Enviar"
                   )}
                 </button>
-                
+
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      
+
     </div>
   );
 };

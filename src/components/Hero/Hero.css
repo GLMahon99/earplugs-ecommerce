@@ -1,8 +1,10 @@
 .hero {
     width: 100%;
     position: relative;
-    background: var(--color-primary);
-    padding: 60px 0 0 0;
+    background-image: url("https://i.ibb.co/xqGxwTS8/Chat-GPT-Image-22-ago-2025-12-15-40-p-m.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 80px 0 0 0;
   }
   
   @media (min-width: 1365px) {
@@ -11,7 +13,10 @@
     }
   }
   
-  
+  /* .hero img{
+    box-shadow: 10px 5px 5px white;
+  } */
+
   .hero h2 {
     font-size: 42px;
     font-weight: 700;
@@ -57,8 +62,10 @@
   }
   
   
-  
-  
+  .hero .img-hero {
+    width: 60%;
+
+  }
   
   
   
@@ -93,7 +100,7 @@
     padding: 60px 30px;
     position: relative;
     overflow: hidden;
-    background: var(--color-primary);
+    background: var(--color-blue-opacity);
     box-shadow: 0 0 29px 0 rgba(0, 0, 0, 0.08);
     transition: all 0.3s ease-in-out;
     border-radius: 8px;
@@ -125,7 +132,7 @@
   }
   
   .hero .icon-box:hover {
-    background: var(--color-tertiary);
+    background: var(--color-primary);
   }
   
   .hero .icon-box:hover .title a,

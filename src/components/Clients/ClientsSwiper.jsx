@@ -46,7 +46,7 @@ const ClientsSwiper = ({data}) => {
         <div className="swiper-wrapper align-items-center">
           {data.map((item) =>
           <SwiperSlide key={item.img}>
-            <div className="swiper-slide"><img src={item.img} className="img-fluid" alt="" /></div>
+            <div className="swiper-slide"><img src={item.imagen} className="img-fluid" alt="" /></div>
           </SwiperSlide>
           )}
         </div>

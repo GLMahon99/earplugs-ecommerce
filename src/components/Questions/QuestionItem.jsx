@@ -13,8 +13,8 @@ const QuestionItem = ({data}) => {
                 data-bs-toggle="collapse"
                 data-bs-target={`#faq-content-${index}`} // Generar un id único para cada pregunta
               >
-                <span className="num">{item.num}.</span>
-                {item.question}
+                <span className="num">{item.numero}.</span>
+                {item.pregunta}
               </button>
             </h3>
             <div
@@ -22,7 +22,7 @@ const QuestionItem = ({data}) => {
               className="accordion-collapse collapse"
               data-bs-parent="#faqlist"
             >
-              <div className="accordion-body">{item.answer}</div>
+              <div className="accordion-body">{item.respuesta}</div>
             </div>
           </div>
         ))}

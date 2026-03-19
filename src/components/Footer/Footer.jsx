@@ -19,7 +19,7 @@ const Footer = () => {
             </p>
             <div className="social-links d-flex mt-4">
               <a href="#" className="twitter">
-                <i className="bi bi-twitter"></i>
+                <i class="bi bi-twitter-x"></i>
               </a>
               <a href="https://www.facebook.com/EarplugsTapones" Target="_blank" className="facebook">
                 <i className="bi bi-facebook"></i>
@@ -58,15 +58,15 @@ const Footer = () => {
             <h4>Productos</h4>
             <ul>
               <li>
-                <NavLink to="/products/waterproof">Proteccion del agua</NavLink>
+                <NavLink to="/products">Proteccion agua y ruido</NavLink>
               </li>
               <li>
-                <NavLink to="/products/soundreducers">
+                <NavLink to="/products">
                   Reductores de sonido
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/products/watersports">Deportes acuáticos</NavLink>
+                <NavLink to="/products">Deportes acuáticos</NavLink>
               </li>
             </ul>
           </div>

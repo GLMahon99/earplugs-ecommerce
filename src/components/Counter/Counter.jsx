@@ -11,7 +11,7 @@ return ( <section id="stats-counter" className="stats-counter">
         <div className="row gy-4 align-items-center">
 
             <div className="col-lg-6">
-                <img src="https://i.ibb.co/Hp1NN5Q/Data-report-pana.png" alt="" className="img-fluid" />
+                <img src="https://i.ibb.co/fMzPggg/Data-report-pana.png" alt="" className="img-fluid" />
                 <a className='invisible' href="https://storyset.com/data">Data illustrations by Storyset</a>
             </div>
 
@@ -19,7 +19,7 @@ return ( <section id="stats-counter" className="stats-counter">
 
                 <div className="stats-item d-flex align-items-center">
                     <span className="purecounter">
-                        <CountUp start={0} end={3671} duration={6}/>
+                        <CountUp start={0} end={3671} duration={10}/>
                     </span>
                     
                     <p><strong>Clientes satisfechos y contando</strong> Tu satisfacción es nuestro mayor logro.</p>
