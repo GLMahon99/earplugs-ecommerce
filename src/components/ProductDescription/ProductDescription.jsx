@@ -41,13 +41,13 @@ const ProductDescription = ({ description, indications, comments, classification
 
   return (
     <div className="description-area container">
-      <ul className="nav nav-tabs mt-5">
+      <ul className="nav nav-tabs">
         <li className="nav-item">
           <a
             className={`nav-link nav-link-description ${activeTab === "Descripcion" ? "active" : ""
               }`}
             href="#Descripcion"
-            onClick={() => setActiveTab("Descripcion")}
+            onClick={(e) => { e.preventDefault(); setActiveTab("Descripcion"); }}
           >
             Descripcion
           </a>
@@ -57,7 +57,7 @@ const ProductDescription = ({ description, indications, comments, classification
             className={`nav-link nav-link-description ${activeTab === "indicaciones" ? "active" : ""
               }`}
             href="#indicaciones"
-            onClick={() => setActiveTab("indicaciones")}
+            onClick={(e) => { e.preventDefault(); setActiveTab("indicaciones"); }}
           >
             Indicaciones de uso
           </a>
@@ -67,7 +67,7 @@ const ProductDescription = ({ description, indications, comments, classification
             className={`nav-link nav-link-description ${activeTab === "comments" ? "active" : ""
               }`}
             href="#comments"
-            onClick={() => setActiveTab("comments")}
+            onClick={(e) => { e.preventDefault(); setActiveTab("comments"); }}
           >
             Comentarios
           </a>
@@ -123,57 +123,64 @@ const ProductDescription = ({ description, indications, comments, classification
                 <Comments comments={comments} />
               </div>
             </div>
-            <div className="col">
-              <p className="mb-4">
+            <div className="col-lg-7">
+              <p className="mb-4 text-muted fst-italic">
                 "¡Tu opinión nos importa! Comparte tu experiencia y ayúdanos a seguir mejorando."
               </p>
 
               <div className="mb-3">
                 <input
                   type="text"
-                  className="form-control mb-4"
+                  className="form-control-comment mb-3 w-100"
                   name="name"
                   value={formData.name}
                   onChange={handleInputChange}
-                  placeholder="nombre y apellido"
+                  placeholder="Nombre y Apellido"
                 />
-                <input
-                  type="email"
-                  className="form-control mb-4"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  placeholder="email"
-                />
-                <input
-                  type="text"
-                  className="form-control mb-4"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleInputChange}
-                  placeholder="teléfono"
-                />
+                <div className="row g-3 mb-3">
+                  <div className="col-md-6">
+                    <input
+                      type="email"
+                      className="form-control-comment w-100"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      placeholder="Email"
+                    />
+                  </div>
+                  <div className="col-md-6">
+                    <input
+                      type="text"
+                      className="form-control-comment w-100"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      placeholder="Teléfono"
+                    />
+                  </div>
+                </div>
               </div>
 
               <div className="mb-4">
                 <textarea
-                  className="form-control"
+                  className="form-control-comment w-100"
                   name="comment"
                   value={formData.comment}
                   onChange={handleInputChange}
-                  rows="5"
-                  placeholder="ingrese su comentario"
+                  rows="4"
+                  placeholder="Ingrese su comentario"
                 ></textarea>
               </div>
-              <div>
+              <div className="d-flex flex-column align-items-start">
                 {isSent && (
-                  <div className="alert alert-success mt-3" role="alert">
+                  <div className="alert alert-success-comment mb-3 w-100 text-center" role="alert">
+                    <i className="bi bi-check2-circle me-2"></i>
                     Gracias por su comentario. ¡Valoramos su opinión!
                   </div>
                 )}
                 <button
                   type="submit"
-                  className="btn btn-primary"
+                  className="btn btn-submit-comment w-100 w-md-auto"
                   onClick={handleCommentSubmit}
                   disabled={isSending}
                 >
@@ -183,10 +190,9 @@ const ProductDescription = ({ description, indications, comments, classification
                       <span className="ms-2">Enviando...</span>
                     </>
                   ) : (
-                    "Enviar"
+                    "Publicar Comentario"
                   )}
                 </button>
-
               </div>
             </div>
           </div>

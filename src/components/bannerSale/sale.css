@@ -1,17 +1,25 @@
 #sale-banner {
-  padding: 0;
-  margin: 0;
-  line-height: 0;
+  width: 100%;
+  height: 120px; /* Altura recortada */
   display: flex;
   justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  margin: 1rem 0;
+  border-radius: 8px;
 }
 
 #sale-banner img {
+  width: 90%;
+  max-width: 800px;
+  height: 100%;
+  object-fit: cover; /* Recorta la imagen para llenar el espacio sin deformarse */
+  object-position: center; /* Centra el recorte */
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08) !important;
+}
 
-  width: 60%;
-  height: auto;
-  margin: 20px;
-  padding: 0;
-  border-radius: 20px 20px 20px 20px;
-  
+#sale-banner img:hover {
+  transform: scale(1.005);
 }
