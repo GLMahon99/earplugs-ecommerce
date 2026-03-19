@@ -1,44 +1,30 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const ProductsItem = ({ title, imagen, id }) => {
+const ProductsItem = ({ title, imagen, id, size }) => {
+  const isSmall = size === "small";
+
   return (
-    // <div className="col products-item filter-product">
-    //   <div className="products-wrap">
-    //     <Link
-    //       to={`/products/${id}`}
-    //       data-gallery="products-gallery-app"
-    //       className="glightbox"
-    //     >
-    //       <div className="container">
-    //         <img src={imagen} className="img-fluid" alt="" />
-    //       </div>
-
-    //       <div className="products-info container">
-    //         <h4>{title}</h4>
-    //       </div>
-    //     </Link>
-    //   </div>
-    // </div>
-
-    <Link to={`/products/${id}`} data-gallery="products-gallery-app">
-      <div className="col product-item  shadow-sm rounded">
-        <div className="button-description text-center d-flex flex-column">
-          <i class="bi bi-plus-square icon-button-description"></i>
-          <p className="text-button-description">Accede a la descripción del producto</p>
-        </div>
-        <div className="d-flex justify-content-center flex-column">
-          <div className="container-img-product">
-            <img src={imagen} alt="img-product" className="img-productList" />
+    <div className={isSmall ? "col-product-small" : "col-product-large"} data-aos="fade-up">
+      <Link to={`/products/${id}`} className="text-decoration-none">
+        <div className="product-item rounded-4 shadow-sm h-100">
+          <div className="button-description text-center d-flex flex-column align-items-center">
+            <i className="bi bi-eye-fill icon-button-description"></i>
+            <p className="text-button-description small">Ver Detalle</p>
           </div>
-          <div className="container-product-title">
-            <h4 className="product-title d-flex justify-content-center">
+
+          <div className={`container-img-product ${isSmall ? "img-small" : ""}`}>
+            <img src={imagen} alt={title} className="img-productList" />
+          </div>
+
+          <div className="container-product-title mt-3">
+            <h4 className={`product-title ${isSmall ? "title-small" : "title-large"}`}>
               {title}
             </h4>
           </div>
         </div>
-      </div>
-    </Link>
+      </Link>
+    </div>
   );
 };
 

@@ -29,40 +29,36 @@ const Products = () => {
   return (
     <section id="products" className="products sections-bg">
       <div className="container" data-aos="fade-up">
-        <div className="section-header">
-          <h2>Productos</h2>
-          <p>
-            Tapones para oídos de la más alta calidad que vas a encontrar en el
-            mercado.
+        <div className="section-header mb-5">
+          <h2 className="title-section">Nuestro Catálogo</h2>
+          <p className="subtitle-section">
+            Descubre nuestra selección de tapones de las mas alta calidad, diseñados para tu máximo confort y protección en cualquier entorno.
           </p>
         </div>
 
         <div
           className="products-isotope"
-          data-products-filter="*"
-          data-products-layout="masonry"
-          data-products-sort="original-order"
           data-aos="fade-up"
           data-aos-delay="100"
         >
-          <div>
+          <div className="d-flex justify-content-center">
             <ul className="filter-products">
               <li className={categoryActive === "all" ? "active" : ""} onClick={() => handleCategoryChange("all")}>
-                Todos los productos
+                Todos
               </li>
               <li className={categoryActive === "both" ? "active" : ""} onClick={() => handleCategoryChange("both")}>
-                Proteccion agua y ruido
+                Agua y Ruido
               </li>
               <li className={categoryActive === "sound" ? "active" : ""} onClick={() => handleCategoryChange("sound")}>
-                Reductores de sonido
+                Reductores de Sonido
               </li>
               <li className={categoryActive === "water" ? "active" : ""} onClick={() => handleCategoryChange("water")}>
-                Deportes acuaticos
+                Deportes Acuáticos
               </li>
             </ul>
           </div>
 
-          <div className="row row-cols-1 row-cols-md-2 row-cols-xl-3 gy-4 products-container">
+          <div className="row g-4 products-container justify-content-center">
             <ProductsList filteredProducts={filteredProducts} />
           </div>
         </div>

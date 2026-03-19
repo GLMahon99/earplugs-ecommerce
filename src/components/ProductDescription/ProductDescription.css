@@ -12,8 +12,10 @@
 
 .nav-tabs {
   border-bottom: 2px solid #f0f0f0 !important;
-  gap: 2rem;
+  gap: 1rem;
   justify-content: center;
+  flex-wrap: nowrap !important;
+  overflow-x: auto;
 }
 
 .nav-link-description {
@@ -110,4 +112,28 @@
   border: none;
   color: #1e8449;
   font-weight: 600;
+}
+
+/* ============
+   Mobile Fixes
+============ */
+@media (max-width: 576px) {
+  .description-area {
+    padding: 1rem 1rem;
+    border-radius: 16px;
+  }
+
+  .nav-tabs {
+    gap: 0.5rem !important;
+  }
+
+  .nav-link-description {
+    font-size: 0.85rem !important;
+    padding: 0.75rem 0.4rem !important;
+    white-space: nowrap;
+  }
+
+  .tab-pane {
+    padding-top: 1rem;
+  }
 }
