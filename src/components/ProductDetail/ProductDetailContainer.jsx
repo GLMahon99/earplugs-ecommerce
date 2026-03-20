@@ -3,6 +3,7 @@ import ProductDescription from "../ProductDescription/ProductDescription";
 import "./ProductDetailContainer.css";
 import { useProductsContext } from "../../context/Context";
 import { Link } from "react-router-dom";
+import { optimizeCloudinaryUrl } from "../../utils/cloudinaryUtils";
 
 const ProductDetailContainer = ({ product }) => {
   const [quantity, setQuantity] = useState(1);
@@ -14,7 +15,12 @@ const ProductDetailContainer = ({ product }) => {
       <div className="row g-5">
         <div className="col-12 col-md-6 d-flex justify-content-center align-items-start">
           <div className="product-image-wrapper p-3" data-aos="zoom-in" data-aos-delay="200">
-            <img src={product.img} alt={product.titulo} className="img-fluid img-product-detail" />
+            <img 
+              src={optimizeCloudinaryUrl(product.img)} 
+              alt={product.titulo} 
+              className="img-fluid img-product-detail" 
+              loading="lazy"
+            />
           </div>
         </div>
 

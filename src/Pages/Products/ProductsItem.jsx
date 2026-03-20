@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { optimizeCloudinaryUrl } from "../../utils/cloudinaryUtils";
 
 const ProductsItem = ({ title, imagen, id, size }) => {
   const isSmall = size === "small";
@@ -14,7 +15,12 @@ const ProductsItem = ({ title, imagen, id, size }) => {
           </div>
 
           <div className={`container-img-product ${isSmall ? "img-small" : ""}`}>
-            <img src={imagen} alt={title} className="img-productList" />
+            <img 
+              src={optimizeCloudinaryUrl(imagen)} 
+              alt={title} 
+              className="img-productList" 
+              loading="lazy"
+            />
           </div>
 
           <div className="container-product-title mt-3">
