@@ -60,3 +60,71 @@ h1 span{
 .nav-item{
     margin-top: 15px;
 }
+
+/* --- Mobile Specific Enhanced Styles --- */
+
+.mobile-icon-wrapper, .mobile-avatar-wrapper {
+    position: relative;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    font-size: 1.2rem;
+    color: white;
+}
+
+.mobile-avatar-wrapper {
+    color: white;
+    font-size: 1.4rem;
+    background: transparent;
+}
+
+.mobile-cart-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #ef4444;
+    color: white;
+    font-size: 0.65rem;
+    font-weight: 800;
+    min-width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--color-primary);
+}
+
+.btn-login-mobile {
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+    border: none;
+    padding: 12px;
+    border-radius: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.btn-login-mobile:active {
+    transform: scale(0.95);
+    background-color: #e67e22;
+}
+
+.offcanvas-body .navlink {
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 10px;
+    transition: background 0.2s ease;
+}
+
+.offcanvas-body .navlink.active {
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+}

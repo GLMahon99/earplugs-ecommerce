@@ -18,7 +18,8 @@
     right: 0;
     left: 0;
     height: 70px;
-    box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    background-color: var(--color-primary); 
   }
   
   .header .logo img {
@@ -48,9 +49,118 @@
     scroll-margin-top: 70px;
   }
 
-  #header #user-name {
+  /* --- Enhanced Cart & Profile Styles --- */
+  
+  .nav-icon-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    padding: 5px;
+  }
+
+  .nav-icon-link:hover {
+    transform: scale(1.05);
+    filter: brightness(1.2);
+  }
+
+  .cart-wrapper {
+    margin-right: 5px;
+  }
+
+  .icon-cart {
+    font-size: 1.4rem;
     color: #fff;
-    font-style: italic;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    transition: background 0.3s ease;
+  }
+
+  .cart-wrapper:hover .icon-cart {
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  .cart-badge {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    background-color: #ef4444; 
+    color: white;
+    font-size: 0.7rem;
+    font-style: normal;
+    font-weight: 800;
+    min-width: 18px;
+    height: 18px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--color-primary);
+    box-shadow: 0 2px 8px rgba(239, 68, 68, 0.4);
+    padding: 0 4px;
+    line-height: 1;
+  }
+
+  .user-profile-link {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 40px;
+    padding: 4px 6px 4px 16px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(4px);
+  }
+
+  .user-profile-link:hover {
+    background: rgba(255, 255, 255, 0.18);
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+
+  .user-info-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  #user-name {
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    letter-spacing: 0.3px;
+  }
+
+  .user-avatar {
+    font-size: 1.5rem;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+  }
+
+  .btn-login-custom {
+    background: transparent;
+    border: 2px solid var(--color-secondary);
+    color: #fff;
+    padding: 9px 24px;
+    border-radius: 40px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .btn-login-custom:hover {
+    background: var(--color-secondary);
+    color: var(--color-primary);
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(230, 126, 34, 0.3);
   }
 
 @media (min-width: 1280px) {

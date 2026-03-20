@@ -71,17 +71,30 @@ const MobileNavbar = () => {
                 <NavLink className="navlink" to="/#contact" onClick={closeOffcanvas}>Contacto</NavLink>
 
               </li>
-              <li className="nav-item">
-                {user ? (
-                  <NavLink to="/CartPage" className="d-flex align-items-center navlink" onClick={closeOffcanvas}>
-                    <i className="bi bi-bag icon-cart">
-                      {totalProductsInCart > 0 ? totalProductsInCart : null}
-                    </i>
-                    <span id="user-name">Bienvenido {user?.nombre} {user?.apellido}</span>
-                  </NavLink>
-                ) : (
+              {user ? (
+                <>
+                  <li className="nav-item">
+                    <NavLink to="/CartPage" className="navlink d-flex align-items-center gap-2" onClick={closeOffcanvas}>
+                      <div className="mobile-icon-wrapper">
+                        <i className="bi bi-bag"></i>
+                        {totalProductsInCart > 0 && <span className="mobile-cart-badge">{totalProductsInCart}</span>}
+                      </div>
+                      <span>Carrito de compras</span>
+                    </NavLink>
+                  </li>
+                  <li className="nav-item">
+                    <NavLink to="/profile" className="navlink d-flex align-items-center gap-2" onClick={closeOffcanvas}>
+                      <div className="mobile-avatar-wrapper">
+                        <i className="bi bi-person-circle"></i>
+                      </div>
+                      <span>Mi Perfil ({user?.nombre})</span>
+                    </NavLink>
+                  </li>
+                </>
+              ) : (
+                <li className="nav-item mt-3">
                   <button
-                    className="btn btn-outline-light"
+                    className="btn btn-login-mobile w-100"
                     onClick={() => {
                       setShowLoginModal(true);
                       closeOffcanvas();
@@ -89,8 +102,8 @@ const MobileNavbar = () => {
                   >
                     Iniciar sesión
                   </button>
-                )}
-              </li>
+                </li>
+              )}
             </ul>
           </div>
         </div>

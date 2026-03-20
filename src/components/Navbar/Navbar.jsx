@@ -36,17 +36,29 @@ const Navbar = () => {
           </nav>
         </div>
 
-        <div className="col d-flex justify-content-end">
+        <div className="col d-flex justify-content-end align-items-center gap-3">
           {user ? (
-            <NavLink to="/CartPage" className="d-flex align-items-center">
-              <i className="bi bi-bag icon-cart">
-                {totalProductsInCart > 0 ? totalProductsInCart : null}
-              </i>
-              <span id="user-name">Bienvenido {user?.nombre} {user?.apellido}</span>
-            </NavLink>
+            <>
+              <NavLink to="/CartPage" className="nav-icon-link cart-wrapper">
+                <i className="bi bi-bag icon-cart">
+                  {totalProductsInCart > 0 && (
+                    <span className="cart-badge">{totalProductsInCart}</span>
+                  )}
+                </i>
+              </NavLink>
+
+              <NavLink to="/profile" className="nav-icon-link user-profile-link">
+                <div className="user-info-container">
+                  <span id="user-name">Hola, {user?.nombre || "Usuario"}</span>
+                  <div className="user-avatar">
+                    <i className="bi bi-person-circle"></i>
+                  </div>
+                </div>
+              </NavLink>
+            </>
           ) : (
             <button
-              className="btn btn-outline-light"
+              className="btn btn-login-custom"
               onClick={() => setShowLoginModal(true)}
             >
               Iniciar sesión
