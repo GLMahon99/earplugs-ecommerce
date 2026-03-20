@@ -3,8 +3,8 @@ import './Loading.css';
 
  const Loading = () => {
     return ( 
-        <div class="loading-container position-absolute start-50 translate-middle mt-4">
-        <div class="loading-text">
+        <div className="loading-container">
+        <div className="loading-text">
             <span>E</span>
             <span>a</span>
             <span>r</span>

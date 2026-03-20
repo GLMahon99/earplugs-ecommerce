@@ -15,12 +15,9 @@ const Topbar = () => {
           </i>
         </div>
         <div className="col d-flex justify-content-center">
-        <i class="bi bi-truck mx-1"></i> <p className="info-shipping-topbar">Envíos a CABA y GBA en 24hs hábiles</p>
+          <i class="bi bi-truck mx-1"></i> <p className="info-shipping-topbar">Envíos a CABA y GBA en 24hs hábiles</p>
         </div>
         <div className="col social-links d-none d-md-flex d-flex justify-content-center align-items-center">
-          <a href="/" className="twitter">
-            <i class="bi bi-twitter-x"></i>
-          </a>
           <a
             href="https://www.facebook.com/EarplugsTapones"
             Target="_blank"
@@ -34,9 +31,6 @@ const Topbar = () => {
             className="instagram"
           >
             <i className="bi bi-instagram"></i>
-          </a>
-          <a href="/" className="linkedin">
-            <i className="bi bi-linkedin"></i>
           </a>
         </div>
       </div>

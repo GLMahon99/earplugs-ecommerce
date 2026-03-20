@@ -5,7 +5,7 @@ import { LogoMiniEarplugs } from "../components/LogoMiniEarplugs/LogoMiniEarplug
 const Preloader = () => {
   return (
     <>
-      <div className="position-absolute top-50 start-50 translate-middle">
+      <div>
         <div className="loader">
           <div className="face">
             <div className="circle"></div>

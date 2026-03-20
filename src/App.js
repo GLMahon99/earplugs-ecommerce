@@ -23,15 +23,24 @@ function App() {
     useProductsContext();
 
   const [showLoader, setShowLoader] = useState(true);
+  const [fadeLoader, setFadeLoader] = useState(false);
   const navigate = useNavigate();
 
   // Loader control
   useEffect(() => {
     if (!loading) {
-      const timer = setTimeout(() => {
+      const fadeTimer = setTimeout(() => {
+        setFadeLoader(true);
+      }, 1500); // Empieza a desaparecer a los 1.5s (ajustable)
+
+      const removeTimer = setTimeout(() => {
         setShowLoader(false);
-      }, 2000);
-      return () => clearTimeout(timer);
+      }, 2300); // Se desmonta a los 2.3s después del fade-out
+
+      return () => {
+        clearTimeout(fadeTimer);
+        clearTimeout(removeTimer);
+      };
     }
   }, [loading]);
 
@@ -65,12 +74,13 @@ function App() {
 
   return (
     <div className="App">
-      {showLoader ? (
-        <div className="body-loader">
+      {showLoader && (
+        <div className={`body-loader ${fadeLoader ? "fade-out" : ""}`}>
           <Preloader />
           <Loading />
         </div>
-      ) : (
+      )}
+      {!showLoader && (
         <>
           <Routes>
             <Route
