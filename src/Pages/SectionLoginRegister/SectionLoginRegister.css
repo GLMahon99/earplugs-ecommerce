@@ -1,185 +1,74 @@
+/* ===================== SECTION LOGIN REGISTER ===================== */
 #section-login {
-  width: 100vw;
-  height: 100vh;
+  background-color: #f4f6f9; /* Subtle light gray */
+}
+
+/* Form Styles for Register layout */
+.custom-input {
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  background-color: #f9fafb;
+  box-shadow: none;
+  transition: all 0.2s ease;
+}
+
+.custom-input:focus {
   background-color: #ffffff;
-  padding: 0;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(23, 75, 135, 0.15); /* matching --color-primary #174B87 */
 }
 
-.portada {
+/* Fix for floating labels with validation icons */
+.form-floating label {
+  color: #6b7280;
+  padding-left: 1rem;
+}
+
+.form-floating > .form-control,
+.form-floating > .form-select {
+  height: calc(3.5rem + 2px);
+  line-height: 1.25;
+}
+
+.btn-login {
   background-color: var(--color-primary);
-  height: 100vh;
-}
-
-#buttons-login button {
-  padding: 10px 0;
-  font-size: 16px;
+  color: #ffffff;
   border: none;
-  cursor: pointer;
-  margin-right: 10px;
+  transition: all 0.2s ease-in-out;
 }
 
-#buttons-login .button-register {
+.btn-login:hover {
+  background-color: #123d6a; /* slightly darker primary */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(23, 75, 135, 0.2);
+  color: #ffffff;
+}
+
+.btn-login:disabled {
+  background-color: #cbd5e1;
+  color: #ffffff;
+  transform: none;
+  box-shadow: none;
+  opacity: 0.8;
+}
+
+.btn-outline-primary {
   color: var(--color-primary);
-  background-color: white;
-  border-bottom: 3px solid var(--color-secondary);
+  border: 1.5px solid var(--color-primary);
+  background-color: transparent;
+  transition: all 0.2s ease;
 }
 
-#buttons-login .button-login {
-  color: #727272;
-  border-bottom: 3px solid #727272;
-  background-color: white;
-}
-
-#buttons-login .button-login:hover {
-  color: var(--color-primary);
-  background-color: white;
-  border-bottom: 3px solid var(--color-secondary);
-}
-
-.btn-confirm-register-login {
+.btn-outline-primary:hover {
   background-color: var(--color-primary);
   color: #ffffff;
 }
 
-.btn-confirm-register-login:hover {
-  background-color: var(--color-secondary);
+.fade-in {
+  animation: overlayFadeIn 0.3s ease-out forwards;
 }
 
-.portada .titles {
-  color: #ffffff;
-  filter: drop-shadow(4px 4px 4px rgb(48, 48, 48));
-}
-
-@keyframes colorChange {
-  0% { color: var(--color-secondary); }
-  33% { color: rgb(255, 0, 98); }
-  66% { color: rgb(30, 255, 0); }
-  100% { color: rgb(255, 113, 31); }
-}
-
-.portada #logo svg {
-  fill: #ffffff;
-  width: 65%;
-  filter: drop-shadow(4px 4px 4px rgb(48, 48, 48));
-  margin-right: 6px;
-  height: auto;
-}
-
-.portada #logo {
-  width: 60px;
-  height: 60px;
-}
-
-.portada h3 #point-earplugs {
-  font-size: 30px;
-  font-weight: bold;
-  animation: colorChange 8s infinite;
-}
-
-.portada-text {
-  color: #ffffff;
-}
-
-/* ===================== RESPONSIVE ===================== */
-
-@media (max-width: 991.98px) {
-  #section-login {
-    height: auto;
-    min-height: 100vh;
-  }
-
-  #section-login .row {
-    flex-direction: column;
-    margin: 0;
-  }
-
-  .portada {
-    width: 100%;
-    height: auto;
-    padding: 40px 20px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .portada #logo {
-    width: 50px;
-    height: 50px;
-    margin-right: 10px;
-  }
-
-  .portada #logo svg {
-    width: 100%;
-    max-width: 60px;
-    margin: 0 auto;
-  }
-
-  .portada .titles {
-    align-items: center !important;
-  }
-
-  .portada h3 {
-    font-size: 24px;
-    text-align: center;
-  }
-
-  #point-earplugs {
-    font-size: 24px;
-  }
-
-  .portada p {
-    font-size: 16px;
-  }
-
-  .portada-text {
-    width: 100%;
-    padding: 10px;
-  }
-
-  #login-register {
-    width: 100%;
-    padding: 20px;
-  }
-
-  #buttons-login {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    align-items: center;
-  }
-
-  #buttons-login button {
-    width: 100%;
-    font-size: 16px;
-    margin: 0;
-  }
-
-  .btn-confirm-register-login {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-  }
-
-  /* ✅ Mantener inputs en fila en móviles */
-
-  #login-register .row {
-    flex-wrap: nowrap;
-    gap: 10px;
-  }
-
-  #login-register .col-auto {
-    flex: 1 1 0;
-  }
-
-  #login-register .form-control,
-  #login-register .form-select {
-    width: 100%;
-  }
-
-  /* Opcional: mejora de legibilidad en textos debajo de inputs */
-  .form-text {
-    font-size: 0.9rem;
-    white-space: nowrap;
-  }
+@keyframes overlayFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }

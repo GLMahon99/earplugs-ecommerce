@@ -5,8 +5,9 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.5);
-  backdrop-filter: blur(2px);
+  background: rgba(15, 23, 42, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,31 +16,83 @@
   box-sizing: border-box;
 }
 
+.fade-in {
+  animation: overlayFadeIn 0.3s ease-out forwards;
+}
+
+@keyframes overlayFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 .login-modal {
   width: 100%;
-  max-width: 400px;
+  max-width: 420px;
   background-color: #fff;
-  border-radius: 8px;
-  padding: 2rem;
-  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+  border-radius: 20px !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
   position: relative;
+  transform: translateY(20px);
+  animation: modalSlideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes modalSlideUp {
+  to { transform: translateY(0); }
+}
+
+/* Inputs personalizados */
+.custom-input {
+  border-radius: 12px;
+  border: 1.5px solid #e2e8f0;
+  background-color: #f8fafc;
+  transition: all 0.2s ease-in-out;
+}
+
+.custom-input:focus {
+  background-color: #fff;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 4px rgba(var(--color-primary-rgb, 0, 0, 0), 0.1);
+}
+
+.form-floating label {
+  color: #64748b;
+  padding-left: 1.2rem;
 }
 
 /* Botón de login */
 .btn-login {
   background-color: var(--color-primary);
   color: #fff;
-  width: 100%;
+  transition: all 0.3s ease;
 }
 
 .btn-login:hover {
   background-color: var(--color-secondary);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  color: #fff;
+}
+
+.btn-login:disabled {
+  background-color: #94a3b8;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Redirección */
+.redirect-btn {
+  color: #64748b;
+  transition: color 0.2s ease;
+}
+
+.redirect-btn:hover {
+  color: var(--color-primary);
 }
 
 /* Responsive tweaks */
 @media (max-width: 480px) {
   .login-modal {
-    padding: 1.5rem 1rem;
-    max-width: 90%;
+    padding: 2rem 1.5rem !important;
+    max-width: 95%;
   }
 }

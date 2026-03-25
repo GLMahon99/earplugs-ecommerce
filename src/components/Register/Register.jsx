@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useProductsContext } from "../../context/Context";
-import { useNavigate } from "react-router-dom"; 
+import { useNavigate } from "react-router-dom";
+
 export const Register = ({ onRegisterSuccess }) => {
   const { register } = useProductsContext();
   const navigate = useNavigate();
@@ -20,8 +21,7 @@ export const Register = ({ onRegisterSuccess }) => {
   const [passwordMatch, setPasswordMatch] = useState(false);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [registerSuccess, setRegisterSuccess] = useState(false); // Nuevo estado
-
+  const [registerSuccess, setRegisterSuccess] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -68,7 +68,7 @@ export const Register = ({ onRegisterSuccess }) => {
     const res = await register(payload);
 
     if (res.success) {
-      setRegisterSuccess(true); // Marca el registro como exitoso
+      setRegisterSuccess(true);
       if (onRegisterSuccess) onRegisterSuccess();
     } else {
       setError(res.message || "Error al registrarse");
@@ -80,146 +80,183 @@ export const Register = ({ onRegisterSuccess }) => {
   useEffect(() => {
     if (registerSuccess) {
       const timer = setTimeout(() => {
-        navigate("/"); // Redirige al home
+        navigate("/");
       }, 2000);
       return () => clearTimeout(timer);
     }
   }, [registerSuccess, navigate]);
 
   return (
-    <div>
-      <h6>Registrarse</h6>
-      {error && <div className="alert alert-danger">{error}</div>}
+    <div className="register-container fade-in w-100">
+      <div className="text-center mb-4">
+        <h3 className="fw-bold mb-1" style={{ color: "var(--color-primary)" }}>
+          Crear Cuenta
+        </h3>
+        <p className="text-muted small">Completá tus datos para registrarte</p>
+      </div>
 
-      <form onSubmit={handleSubmit}>
-        <div className="mb-3 row">
-          <div className="col-auto">
-            <input
-              type="text"
-              name="nombre"
-              placeholder="Nombre"
-              className="form-control"
-              onChange={handleChange}
-              value={formData.nombre}
-            />
+      {error && <div className="alert alert-danger py-2 rounded-3 shadow-sm">{error}</div>}
+
+      <form onSubmit={handleSubmit} className="register-form px-1">
+        <div className="row g-3 mb-3">
+          <div className="col-md-6">
+            <div className="form-floating">
+              <input
+                type="text"
+                name="nombre"
+                className="form-control custom-input"
+                id="floatingNombre"
+                placeholder="Nombre"
+                onChange={handleChange}
+                value={formData.nombre}
+              />
+              <label htmlFor="floatingNombre">Nombre</label>
+            </div>
           </div>
-          <div className="col-auto">
-            <input
-              type="text"
-              name="apellido"
-              placeholder="Apellido"
-              className="form-control"
-              onChange={handleChange}
-              value={formData.apellido}
-            />
+          <div className="col-md-6">
+            <div className="form-floating">
+              <input
+                type="text"
+                name="apellido"
+                className="form-control custom-input"
+                id="floatingApellido"
+                placeholder="Apellido"
+                onChange={handleChange}
+                value={formData.apellido}
+              />
+              <label htmlFor="floatingApellido">Apellido</label>
+            </div>
           </div>
         </div>
 
-        <div className="mb-3 row">
-          <div className="col-auto">
-            <input
-              type="text"
-              name="dni"
-              placeholder="DNI CLI o CUIT"
-              className="form-control"
-              onChange={handleChange}
-              value={formData.dni}
-            />
+        <div className="row g-3 mb-3">
+          <div className="col-md-6">
+            <div className="form-floating">
+              <input
+                type="text"
+                name="dni"
+                className="form-control custom-input"
+                id="floatingDni"
+                placeholder="Identificación"
+                onChange={handleChange}
+                value={formData.dni}
+              />
+              <label htmlFor="floatingDni">Nro Documento</label>
+            </div>
           </div>
-          <div className="col-auto">
-            <select
-              name="tipo_identificacion"
-              className="form-select"
-              onChange={handleChange}
-              value={formData.tipo_identificacion}
-            >
-              <option value="DNI">DNI</option>
-              <option value="CUIT">CUIT</option>
-            </select>
+          <div className="col-md-3">
+            <div className="form-floating">
+              <select
+                name="tipo_identificacion"
+                className="form-select custom-input"
+                id="floatingTipo"
+                onChange={handleChange}
+                value={formData.tipo_identificacion}
+              >
+                <option value="DNI">DNI</option>
+                <option value="CUIT">CUIT</option>
+              </select>
+              <label htmlFor="floatingTipo">Tipo</label>
+            </div>
           </div>
-          <div className="col-auto">
-            <select
-              name="iva"
-              className="form-select"
-              onChange={handleChange}
-              value={formData.iva}
-            >
-              <option value="Consumidor Final">Consumidor Final</option>
-              <option value="Resp. Inscripto">Resp. Inscripto</option>
-              <option value="IVA Exento">IVA Exento</option>
-              <option value="Monotributo">Monotributo</option>
-            </select>
+          <div className="col-md-3">
+            <div className="form-floating">
+              <select
+                name="iva"
+                className="form-select custom-input"
+                id="floatingIva"
+                onChange={handleChange}
+                value={formData.iva}
+              >
+                <option value="Consumidor Final">Consumidor Final</option>
+                <option value="Resp. Inscripto">Resp. Inscripto</option>
+                <option value="IVA Exento">IVA Exento</option>
+                <option value="Monotributo">Monotributo</option>
+              </select>
+              <label htmlFor="floatingIva">Condición IVA</label>
+            </div>
           </div>
         </div>
 
-        <div className="mb-3">
-          <input
-            type="text"
-            name="phone"
-            placeholder="Ingrese número de teléfono"
-            className="form-control"
-            onChange={handleChange}
-            value={formData.phone}
-          />
-        </div>
-
-        <div className="mb-3">
-          <input
-            type="email"
-            name="email"
-            placeholder="Ingrese Email"
-            className="form-control"
-            onChange={handleChange}
-            value={formData.email}
-          />
-        </div>
-
-        <div className="mb-3 row g-3 align-items-center">
-          <div className="col-auto">
-            <input
-              type="password"
-              name="password"
-              placeholder="Contraseña"
-              className="form-control"
-              onChange={handleChange}
-              value={formData.password}
-            />
+        <div className="row g-3 mb-3">
+          <div className="col-md-6">
+             <div className="form-floating">
+              <input
+                type="text"
+                name="phone"
+                className="form-control custom-input"
+                id="floatingPhone"
+                placeholder="Teléfono"
+                onChange={handleChange}
+                value={formData.phone}
+              />
+              <label htmlFor="floatingPhone">Teléfono</label>
+            </div>
           </div>
-          <div className="col-auto">
-            <span className="form-text">
-              {isValidPassword ? "✔ Contraseña válida" : "❌ Entre 8 y 20 caracteres"}
+          <div className="col-md-6">
+            <div className="form-floating">
+              <input
+                type="email"
+                name="email"
+                className="form-control custom-input"
+                id="floatingRegEmail"
+                placeholder="Email"
+                onChange={handleChange}
+                value={formData.email}
+              />
+              <label htmlFor="floatingRegEmail">Email</label>
+            </div>
+          </div>
+        </div>
+
+        <div className="row g-3 mb-4">
+          <div className="col-md-6">
+            <div className="form-floating mb-1">
+              <input
+                type="password"
+                name="password"
+                className={`form-control custom-input ${formData.password ? (isValidPassword ? "is-valid" : "is-invalid") : ""}`}
+                id="floatingRegPassword"
+                placeholder="Contraseña"
+                onChange={handleChange}
+                value={formData.password}
+              />
+              <label htmlFor="floatingRegPassword">Contraseña</label>
+            </div>
+            <span className="small d-block ms-1" style={{ color: isValidPassword ? '#10b981' : '#64748b' }}>
+              {isValidPassword ? "✔ Contraseña válida" : "Entre 8 y 20 caracteres"}
             </span>
           </div>
-        </div>
-
-        <div className="mb-3 row g-3 align-items-center">
-          <div className="col-auto">
-            <input
-              type="password"
-              name="confirmPassword"
-              placeholder="Repetir contraseña"
-              className="form-control"
-              onChange={handleChange}
-              value={formData.confirmPassword}
-            />
-          </div>
-          <div className="col-auto">
-            <span className="form-text">
-              {passwordMatch ? "✔ Contraseñas coinciden" : "❌ Las contraseñas no coinciden"}
+          <div className="col-md-6">
+            <div className="form-floating mb-1">
+              <input
+                type="password"
+                name="confirmPassword"
+                className={`form-control custom-input ${formData.confirmPassword ? (passwordMatch ? "is-valid" : "is-invalid") : ""}`}
+                id="floatingConfirm"
+                placeholder="Confirmar Contraseña"
+                onChange={handleChange}
+                value={formData.confirmPassword}
+              />
+              <label htmlFor="floatingConfirm">Repetir Contraseña</label>
+            </div>
+            <span className="small d-block ms-1" style={{ color: passwordMatch && formData.confirmPassword ? '#10b981' : '#64748b' }}>
+              {passwordMatch && formData.confirmPassword ? "✔ Las contraseñas coinciden" : (formData.confirmPassword ? "❌ No coinciden" : " ")}
             </span>
           </div>
         </div>
 
          <button
           type="submit"
-          className="btn btn-confirm-register-login w-100"
+          className="btn btn-login w-100 py-3 fw-bold rounded-pill shadow-sm"
           disabled={!isFormComplete || loading || registerSuccess}
+          style={{ transition: 'all 0.3s ease' }}
         >
           {registerSuccess
-            ? "Registro exitoso"
+            ? "¡Registro exitoso! Redirigiendo..."
             : loading
             ? "Registrando..."
-            : "Registrarse"}
+            : "Completar Registro"}
         </button>
       </form>
     </div>
