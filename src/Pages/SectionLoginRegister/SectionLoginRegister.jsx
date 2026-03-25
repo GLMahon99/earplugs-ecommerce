@@ -7,8 +7,8 @@ import { useNavigate } from "react-router-dom";
 export const SectionLoginRegister = () => {
   const navigate = useNavigate();
   return (
-    <section id="section-login" className="d-flex w-100 min-vh-100 p-0 m-0">
-      <div className="row g-0 w-100 min-vh-100">
+    <section id="section-login" className="p-0 m-0">
+      <div className="row g-0 min-vh-100">
         {/* Left Side Info */}
         <div 
           className="col-lg-5 d-none d-lg-flex flex-column align-items-center justify-content-center position-relative" 
@@ -33,8 +33,8 @@ export const SectionLoginRegister = () => {
         </div>
 
         {/* Right Side Form */}
-        <div className="col-lg-7 d-flex flex-column justify-content-center bg-white">
-          <div className="w-100 px-4 px-md-5 py-5 mx-auto" style={{ maxWidth: "800px" }}>
+        <div className="col-lg-7 d-flex bg-white flex-column">
+          <div className="w-100 px-3 px-md-5 py-4 py-md-5 m-auto" style={{ maxWidth: "800px" }}>
             <div className="d-flex justify-content-end align-items-center mb-5 pb-3 border-bottom border-light">
               <span className="text-muted small me-3 d-none d-sm-inline">¿Ya tenés cuenta?</span>
               <button 
