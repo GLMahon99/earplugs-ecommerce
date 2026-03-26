@@ -16,31 +16,46 @@ import { useProductsContext } from "./context/Context";
 import "aos/dist/aos.css";
 
 import React, { useState, useEffect } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route, useNavigate, Outlet } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
+
+// Componente Layout para reutilizar módulos fijos sin recargarlos
+const MainLayout = () => {
+  return (
+    <>
+      <Header />
+      <ScrollTop />
+      {/* Outlet renderiza dinámicamente el contenido de la página actual */}
+      <Outlet />
+      <Footer />
+    </>
+  );
+};
 
 function App() {
-  const { showLoginModal, setShowLoginModal, user, login, loading } =
-    useProductsContext();
+  const { showLoginModal, setShowLoginModal, user, loading } = useProductsContext();
 
   const [showLoader, setShowLoader] = useState(true);
   const [fadeLoader, setFadeLoader] = useState(false);
   const navigate = useNavigate();
 
-  // Loader control
+  // 1. Control Inteligente del Loader (UX)
+  // Desaparece en el milisegundo que loading pasa a false (vinculado directo a los datos reales),
+  // pero ejecutando la transición visual animada.
   useEffect(() => {
     if (!loading) {
-      const fadeTimer = setTimeout(() => {
-        setFadeLoader(true);
-      }, 1500); // Empieza a desaparecer a los 1.5s (ajustable)
-
+      // Inicia opacidad 0 inmediatamente (gracias a CSS transition 0.8s)
+      setFadeLoader(true);
+      
+      // Destruye el DOM del loader cuando termina la animación
       const removeTimer = setTimeout(() => {
         setShowLoader(false);
-      }, 2300); // Se desmonta a los 2.3s después del fade-out
+      }, 800); 
 
-      return () => {
-        clearTimeout(fadeTimer);
-        clearTimeout(removeTimer);
-      };
+      return () => clearTimeout(removeTimer);
+    } else {
+      setShowLoader(true);
+      setFadeLoader(false);
     }
   }, [loading]);
 
@@ -51,7 +66,7 @@ function App() {
     }
   }, [user, setShowLoginModal]);
 
-  // Init AOS
+  // Init AOS para animaciones
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -61,96 +76,52 @@ function App() {
     });
   }, []);
 
-  const handleLogin = () => {
-    const dummyUser = { name: "Gastón", email: "ejemplo@mail.com" };
-    login(dummyUser);
-    setShowLoginModal(false);
-  };
-
+  // 2. Limpieza de lógica residual del Login
+  // Modificamos handleRedirect, el handleLogin falso se eliminó.
   const handleRedirect = () => {
     setShowLoginModal(false);
     navigate("/LoginRegister");
   };
 
   return (
-    <div className="App">
-      {showLoader && (
-        <div className={`body-loader ${fadeLoader ? "fade-out" : ""}`}>
-          <Preloader />
-          <Loading />
-        </div>
-      )}
-      {!showLoader && (
-        <>
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <>
-                  <Header />
-                  <ScrollTop />
-                  <Home />
-                  <Footer />
-                </>
-              }
-            />
-            <Route
-              path="/products"
-              element={
-                <>
-                  <Header />
-                  <ScrollTop />
-                  <Products />
-                  <Footer />
-                </>
-              }
-            />
-            <Route
-              path="/products/:id"
-              element={
-                <>
-                  <Header />
-                  <ScrollTop />
-                  <ProductDetail />
-                  <Footer />
-                </>
-              }
-            />
-            <Route
-              path="/CartPage"
-              element={
-                <>
-                  <Header />
-                  <ScrollTop />
-                  <CartPage />
-                  <Footer />
-                </>
-              }
-            />
-            <Route path="/LoginRegister" element={<SectionLoginRegister />} />
-            <Route
-              path="/profile"
-              element={
-                <>
-                  <Header />
-                  <UserProfile />
-                  <Footer />
-                </>
-              }
-            />
-          </Routes>
+    <HelmetProvider>
+      <div className="App">
+        {/* Renderizado dinámico del loader */}
+        {showLoader && (
+          <div className={`body-loader ${fadeLoader ? "fade-out" : ""}`}>
+            <Preloader />
+            <Loading />
+          </div>
+        )}
+        
+        {/* Renderizado de rutas mediante Outlet (protegidas del render prematuro) */}
+        {!loading && (
+          <>
+            <Routes>
+              {/* Todas las rutas anidadas aquí comparten Header y Footer mágicamente sin recargarlo */}
+              <Route element={<MainLayout />}>
+                <Route path="/" element={<Home />} />
+                <Route path="/products" element={<Products />} />
+                <Route path="/products/:id" element={<ProductDetail />} />
+                <Route path="/CartPage" element={<CartPage />} />
+                <Route path="/profile" element={<UserProfile />} />
+              </Route>
 
-          {/* Overlay de login solo si no hay sesión */}
-          {!user && showLoginModal && (
-            <LoginOverlay
-              onLogin={handleLogin}
-              onRedirect={handleRedirect}
-              onClose={() => setShowLoginModal(false)}
-            />
-          )}
-        </>
-      )}
-    </div>
+              {/* Rutas totalmente apartadas (como la de registro) no usan el Header/Footer */}
+              <Route path="/LoginRegister" element={<SectionLoginRegister />} />
+            </Routes>
+
+            {/* Overlay de login con lógica purificada */}
+            {!user && showLoginModal && (
+              <LoginOverlay
+                onRedirect={handleRedirect}
+                onClose={() => setShowLoginModal(false)}
+              />
+            )}
+          </>
+        )}
+      </div>
+    </HelmetProvider>
   );
 }
 
