@@ -26,21 +26,21 @@ const ProductDetail = () => {
   // Generamos una descripción limpia para compartición si el producto no tuviera una corta
   const metaDescription = product.descripcion 
     ? product.descripcion.slice(0, 150) + '...' 
-    : `Encontrá el tapón auditivo ${product.nombre} ideal para protección y confort.`;
+    : `Encontrá el tapón auditivo ${product.titulo} ideal para protección y confort.`;
 
   return (
     <>
       <Helmet>
         {/* Título en la pestaña del navegador */}
-        <title>{product.nombre} | Earplugs Store</title>
+        <title>{`${product.titulo} | Earplugs Store`}</title>
         
         {/* Descripción leída por Google para los resultados de búsqueda */}
         <meta name="description" content={metaDescription} />
         
         {/* Estos tags "og" son los que lee WhatsApp/Facebook para la previsualización al pasar un link */}
-        <meta property="og:title" content={`${product.nombre} - Earplugs Store`} />
+        <meta property="og:title" content={`${product.titulo} - Earplugs Store`} />
         <meta property="og:description" content={metaDescription} />
-        <meta property="og:image" content={product.imagen_url || product.imagen} />
+        <meta property="og:image" content={product.img} />
         <meta property="og:type" content="product" />
       </Helmet>
 
