@@ -97,10 +97,10 @@ const ProductDescription = ({ description, indications, comments, classification
           role="tabpanel"
           aria-labelledby="ex1-tab-3"
         >
-          <div className="container row row-cols-1 row-cols-lg-2">
-            <div className="col">
-              <div className="container w-75 mb-3">
-                <div className="row row-cols-2">
+          <div className="row row-cols-1 row-cols-lg-2 mx-0">
+            <div className="col px-0">
+              <div className="container w-75 mb-3 px-0">
+                <div className="row row-cols-2 mx-0">
                   <div className="col">
                     <h1 className="puntuacion d-flex flex-row-reverse">{classification}</h1>
                   </div>
@@ -133,8 +133,8 @@ const ProductDescription = ({ description, indications, comments, classification
                   onChange={handleInputChange}
                   placeholder="Nombre y Apellido"
                 />
-                <div className="row g-3 mb-3">
-                  <div className="col-md-6">
+                  <div className="row g-3 mx-0 mb-3">
+                  <div className="col-md-6 px-0 px-md-2">
                     <input
                       type="email"
                       className="form-control-comment w-100"

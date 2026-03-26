@@ -55,9 +55,17 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
-body {
+html, body {
+  overflow-x: hidden !important;
+  max-width: 100vw !important;
+  width: 100% !important;
   font-family: var(--font-default);
   color: var(--color-default);
+}
+
+#root, .App {
+  overflow-x: hidden !important;
+  width: 100%;
 }
 
 a {

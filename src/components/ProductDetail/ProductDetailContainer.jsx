@@ -12,7 +12,7 @@ const ProductDetailContainer = ({ product }) => {
 
   return (
     <div className="container" id="productDetail-container" data-aos="fade-up">
-      <div className="row g-5">
+      <div className="row gy-5 gx-3 gx-lg-5">
         <div className="col-12 col-md-6 d-flex justify-content-center align-items-start">
           <div className="product-image-wrapper p-3" data-aos="zoom-in" data-aos-delay="200">
             <img 
@@ -37,8 +37,8 @@ const ProductDetailContainer = ({ product }) => {
               ))}
             </ul>
 
-            <div className="purchase-section mt-5 p-4 bg-light rounded-4">
-              <div className="row align-items-center g-4">
+            <div className="purchase-section mt-5 p-3 p-md-4 bg-light rounded-4 overflow-hidden">
+              <div className="row align-items-center gy-4 gx-3 mx-0">
                 <div className="col-12 col-sm-6">
                   <div className="product-price">${product.precio?.toLocaleString()},00</div>
                   <div className="product-stock mt-1">
