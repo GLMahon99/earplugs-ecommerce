@@ -1,34 +1,272 @@
-#transfer-container #datos {
-  list-style: none;
+/* ================================
+   PREMIUM TRANSFER MODAL STYLES
+   ================================ */
+
+.transfer-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(13, 17, 23, 0.85); /* Dark background */
+  backdrop-filter: blur(12px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3000;
+  animation: fadeInModal 0.4s ease-out;
+}
+
+#transfer-container.transfer-modal-content {
+  background: white;
+  width: 95%;
+  max-width: 1000px;
+  border-radius: 32px;
+  position: relative;
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6);
   padding: 0;
+  overflow: hidden;
+  animation: slideUpModal 0.5s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
-.divider {
-  height: 1px;
-  background-color: rgb(218, 218, 218);
+.btn-close-modal {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 100;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
 }
 
-#datos span {
-  font-weight: bold;
+.btn-close-modal:hover {
+  background: #ff4757;
+  transform: rotate(90deg) scale(1.1);
+  box-shadow: 0 0 15px rgba(255, 71, 87, 0.4);
 }
 
-
-#transfer-container .card-transfer {
-  background-color: var(--color-primary);
-  color: #fff;
+/* ----- Layout ----- */
+.transfer-layout {
+  display: flex;
+  min-height: 550px;
 }
 
-#transfer-container {
-  width: 75%;
+.transfer-summary-side, .transfer-data-side {
+  padding: 4rem 3rem;
+  flex: 1;
 }
 
-.button-wsp{
-    width: 50%;
+/* ----- Summary Side (Light) ----- */
+.transfer-summary-side {
+  background: #f8fafc;
+  border-right: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
 }
 
-@media (max-width: 992px) {
-  #transfer-container, .button-wsp  {
-    width: 100%;
+.transfer-header h3 {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800;
+  font-size: 2rem;
+  color: #1e293b;
+  margin-bottom: 0.5rem;
+}
+
+.transfer-summary-rows {
+  margin-top: 3rem;
+  flex: 1;
+}
+
+.transfer-summary-rows span {
+  font-size: 1.1rem;
+  color: #475569;
+}
+
+.transfer-total-box {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 20px;
+  border: 2px dashed #cbd5e1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.transfer-total-value {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 900;
+  font-size: 1.8rem;
+  color: var(--color-primary);
+}
+
+/* ----- Data Side (Dark Premium) ----- */
+.transfer-data-side {
+  background: linear-gradient(135deg, #1B5A9E 0%, #0d2b52 100%);
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.transfer-data-side h3 {
+  font-weight: 800;
+  font-family: 'Outfit', sans-serif;
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.transfer-cards-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.transfer-data-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 1.5rem;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  min-height: 90px;
+}
+
+.transfer-data-card:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.card-action {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.4;
+  transition: opacity 0.2s;
+}
+
+.transfer-data-card:hover .card-action {
+  opacity: 1;
+}
+
+.card-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 1.5px;
+}
+
+.card-value {
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  font-size: 1.15rem;
+  color: white;
+  word-break: break-all;
+}
+
+.copy-toast {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #27ae60;
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  animation: slideToast 0.3s ease-out;
+}
+
+@keyframes slideToast {
+  from { opacity: 0; transform: translate(-50%, 10px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+/* ----- WhatsApp Button ----- */
+.btn-whatsapp-premium {
+  background: #25d366;
+  color: white;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem;
+  border-radius: 50px;
+  font-weight: 800;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+}
+
+.btn-whatsapp-premium:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 15px 40px rgba(37, 211, 102, 0.5);
+  color: white;
+}
+
+/* ----- Instructions ----- */
+.transfer-instructions {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 1.25rem;
+  border-left: 4px solid #3498db;
+}
+
+/* ----- Animations ----- */
+@keyframes fadeInModal {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUpModal {
+  from { opacity: 0; transform: scale(0.9) translateY(40px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* ----- Responsive ----- */
+@media (max-width: 900px) {
+  .transfer-layout {
+    flex-direction: column;
   }
   
+  .transfer-summary-side, .transfer-data-side {
+    padding: 2.5rem 1.5rem;
+  }
+  
+  .btn-close-modal {
+    top: 15px;
+    right: 15px;
+    background: white;
+    color: #333;
+  }
+
+  .transfer-summary-rows {
+    margin-top: 1.5rem;
+  }
 }

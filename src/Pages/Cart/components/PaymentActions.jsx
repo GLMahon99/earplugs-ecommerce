@@ -20,7 +20,12 @@ const PaymentActions = ({
 
   // ✅ Mostrar transferencia directamente si ya hay preferencia y método es transferencia
   if (preferenceId && methodPay === "transferencia") {
-    return <Transfer shippingPrice={shippingPrice}/>;
+    return (
+      <Transfer 
+        shippingPrice={shippingPrice} 
+        onClose={() => window.location.reload()} 
+      />
+    );
   }
 
   // ✅ Mostrar Wallet de MercadoPago si método es MP

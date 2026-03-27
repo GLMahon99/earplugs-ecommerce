@@ -1,64 +1,60 @@
-// components/cart/ShippingForm.jsx
 import React from "react";
 
 const ShippingForm = ({ formData, handleInputChange, isFormLocked, priceShipp }) => (
   <>
-    <div className="title-card-cart mb-3">
-      <h6>Datos de Envío</h6><span>Campos obligatorios*</span>
+    <div className="title-card-cart d-flex justify-content-between align-items-center">
+      <h6 className="m-0">Datos de Envío</h6>
+      <span className="text-muted small">Campos obligatorios*</span>
     </div>
-    <div className="row mb-3">
-      <div className="col-8">
-        <span className="d-block title-input-shipp">Dirección*</span>
-        <input
-          name="address"
-          className="w-100 form-control"
-          type="text"
-          value={formData.address}
-          onChange={handleInputChange}
-          disabled={isFormLocked}
-        />
+
+    <div className="row g-3 mt-1">
+      <div className="col-12 col-md-8">
+        <label className="form-label small fw-bold text-muted text-uppercase mb-1">Dirección*</label>
+        <div className="input-group">
+          <span className="input-group-text bg-light border-end-0 rounded-start-4">
+               <i className="bi bi-geo-alt"></i>
+          </span>
+          <input
+            name="address"
+            className="form-control custom-input border-start-0 rounded-end-4"
+            type="text"
+            placeholder="Calle y número"
+            value={formData.address}
+            onChange={handleInputChange}
+            disabled={isFormLocked}
+          />
+        </div>
       </div>
-            <div className="col-lg-2 col-2">
-        <span className="d-block title-input-shipp">Piso</span>
+      
+      <div className="col-6 col-md-2">
+        <label className="form-label small fw-bold text-muted text-uppercase mb-1">Piso</label>
         <input
           name="floor"
-          className="w-100 form-control px-2"
+          className="form-control custom-input text-center"
           type="text"
           value={formData.floor}
           onChange={handleInputChange}
           disabled={isFormLocked}
         />
       </div>
-      <div className="col-lg-2 col-2">
-        <span className="d-block title-input-shipp">Puerta</span>
+      
+      <div className="col-6 col-md-2">
+        <label className="form-label small fw-bold text-muted text-uppercase mb-1">Puerta</label>
         <input
           name="door"
-          className="w-100 form-control px-2"
+          className="form-control custom-input text-center"
           type="text"
           value={formData.door}
           onChange={handleInputChange}
           disabled={isFormLocked}
         />
       </div>
-      {/* <div className="col-4">
-        <span className="d-block title-input-shipp">Teléfono*</span>
-        <input
-          name="phone"
-          className="w-100 form-control"
-          type="text"
-          value={formData.phone}
-          onChange={handleInputChange}
-          disabled={isFormLocked}
-        />
-      </div> */}
-      
-    </div>
-    <div className="row mb-3">
-      <div className="col-lg-4 col-4">
-        <span className="d-block title-input-shipp text-center">CP*</span>
+
+      <div className="col-4 col-md-3">
+        <label className="form-label small fw-bold text-muted text-uppercase mb-1">CP*</label>
         <input
           name="cp"
-          className="w-100 form-control"
+          className="form-control custom-input text-center"
           type="text"
           value={formData.cp}
           onChange={handleInputChange}
@@ -66,10 +62,10 @@ const ShippingForm = ({ formData, handleInputChange, isFormLocked, priceShipp })
         />
       </div>
       
-      <div className="col-4">
-        <span className="d-block title-input-shipp">Localidad*</span>
+      <div className="col-8 col-md-4">
+        <label className="form-label small fw-bold text-muted text-uppercase mb-1">Localidad*</label>
         <select
-          className="w-100 form-select"
+          className="form-select custom-input"
           name="city"
           value={formData.city}
           onChange={handleInputChange}
@@ -83,10 +79,10 @@ const ShippingForm = ({ formData, handleInputChange, isFormLocked, priceShipp })
         </select>
       </div>
       
-      <div className="col-4">
-        <span className="d-block title-input-shipp">Tipo de vivienda*</span>
+      <div className="col-12 col-md-5">
+        <label className="form-label small fw-bold text-muted text-uppercase mb-1">Tipo de vivienda*</label>
         <select
-          className="w-100 form-select"
+          className="form-select custom-input"
           name="type_of_housing"
           value={formData.type_of_housing}
           onChange={handleInputChange}
@@ -96,33 +92,20 @@ const ShippingForm = ({ formData, handleInputChange, isFormLocked, priceShipp })
           <option value="comercial">Comercial</option>
         </select>
       </div>
-      {/* <div className="col-lg-4 col-7">
-        <span className="d-block title-input-shipp">Email*</span>
-        <input
-          name="email"
-          className="w-100 form-control"
-          type="text"
-          value={formData.email}
-          onChange={handleInputChange}
-          disabled={isFormLocked}
-        />
-      </div> */}
-    </div>
-    <div className="row">
-      
+
       <div className="col-12">
-        <span className="d-block title-input-shipp">Observación</span>
-        <input
+        <label className="form-label small fw-bold text-muted text-uppercase mb-1">Observaciones adicionales</label>
+        <textarea
           name="additional_information"
-          className="w-100 form-control"
-          type="text"
+          className="form-control custom-input"
+          rows="2"
+          placeholder="Escriba aquí indicaciones extras para el envío..."
           value={formData.additional_information}
           onChange={handleInputChange}
           disabled={isFormLocked}
         />
       </div>
     </div>
-    
   </>
 );
 

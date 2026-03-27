@@ -125,12 +125,14 @@ const CartPage = () => {
   };
 
   return (
-    <section id="cartPage" className="d-flex justify-content-center sections-bg">
-      
+    <section id="cartPage" className="sections-bg">
       <div className="container d-flex flex-column">
         <BannerSale/>
-        <h2 className="text-align-center">Finalice su compra</h2>
-        <div className="my-3">
+        <div className="cart-header text-center my-4">
+          <h2 className="fw-bold text-uppercase letter-spacing-1">Finalice su compra</h2>
+          <p className="text-muted">Complete sus datos para procesar el pedido</p>
+        </div>
+        <div className="checkout-content mt-2">
           <div className="row justify-content-center">
             <div className="col-lg-6 col-sm-12 card-cart rounded shadow-sm products-cart">
               <CartItems
