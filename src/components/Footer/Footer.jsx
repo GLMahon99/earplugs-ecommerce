@@ -19,10 +19,10 @@ const Footer = () => {
             </p>
             <div className="social-links d-flex mt-4">
 
-              <a href="https://www.facebook.com/EarplugsTapones" Target="_blank" className="facebook">
+              <a href="https://www.facebook.com/EarplugsTapones" target="_blank" rel="noreferrer noopener" className="facebook">
                 <i className="bi bi-facebook"></i>
               </a>
-              <a href="https://www.instagram.com/earplugs_tjm/" Target="_blank" className="instagram">
+              <a href="https://www.instagram.com/earplugs_tjm/" target="_blank" rel="noreferrer noopener" className="instagram">
                 <i className="bi bi-instagram"></i>
               </a>
             </div>

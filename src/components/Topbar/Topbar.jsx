@@ -21,13 +21,15 @@ const Topbar = () => {
           <a
             href="https://www.facebook.com/EarplugsTapones"
             target="_blank"
+            rel="noreferrer noopener"
             className="facebook"
           >
             <i className="bi bi-facebook"></i>
           </a>
           <a
             href="https://www.instagram.com/earplugs_tjm/"
-            Target="_blank"
+            target="_blank"
+            rel="noreferrer noopener"
             className="instagram"
           >
             <i className="bi bi-instagram"></i>
