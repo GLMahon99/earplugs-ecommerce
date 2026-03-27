@@ -1,10 +1,39 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { useProductsContext } from "../../context/Context";
 import { Link } from "react-router-dom";
 import "./UserProfile.css";
 
 const UserProfile = () => {
   const { user, logout } = useProductsContext();
+  const [orders, setOrders] = useState([]);
+  const [loadingOrders, setLoadingOrders] = useState(true);
+
+  useEffect(() => {
+    const fetchOrders = async () => {
+      if (!user) return;
+      try {
+        setLoadingOrders(true);
+        // Intentamos obtener las órdenes. Si el backend requiere user_id o email, 
+        // lo pasamos como parámetro. 
+        const res = await axios.get("https://adminearplugs.up.railway.app/api/auth/orders", {
+          params: { email: user.email } // Comúnmente se usa el email o ID
+        });
+
+        if (res.data && Array.isArray(res.data)) {
+          setOrders(res.data);
+        } else if (res.data.orders && Array.isArray(res.data.orders)) {
+          setOrders(res.data.orders);
+        }
+      } catch (error) {
+        console.error("Error fetching orders:", error);
+      } finally {
+        setLoadingOrders(false);
+      }
+    };
+
+    fetchOrders();
+  }, [user]);
 
   if (!user) {
     return (
@@ -77,7 +106,62 @@ const UserProfile = () => {
           </div>
         </div>
 
-        {/* Actions */}
+        {/* Orders Section */}
+        <div className="profile-orders-section" data-aos="fade-up" data-aos-delay="150">
+          <h2 className="profile-section-title">
+            <i className="bi bi-bag-check-fill me-2"></i>
+            Historial de compras
+          </h2>
+
+          {loadingOrders ? (
+            <div className="orders-loading">
+              <div className="spinner-border text-primary" role="status">
+                <span className="visually-hidden">Cargando...</span>
+              </div>
+              <p>Cargando tus pedidos...</p>
+            </div>
+          ) : orders.length > 0 ? (
+            <div className="orders-list mt-4">
+              {orders.map((order) => (
+                <div className="order-card" key={order.id}>
+                  <div className="order-header">
+                    <div className="order-info">
+                      <span className="order-number">Pedido #{order.id}</span>
+                      <span className="order-date">
+                        <i className="bi bi-calendar3 me-1"></i>
+                        {new Date(order.fecha || order.created_at).toLocaleDateString()}
+                      </span>
+                    </div>
+                    <div className={`order-status status-${(order.estado || 'completado').toLowerCase()}`}>
+                      {order.estado || 'Completado'}
+                    </div>
+                  </div>
+                  <div className="order-body">
+                    <div className="order-items-summary">
+                      {/* Si el backend devuelve items, se podrían iterar aquí. 
+                          Por ahora mostramos el total y la cantidad de productos */}
+                      <p className="order-total-label">Total pagado</p>
+                      <p className="order-total-value">${Number(order.total).toLocaleString('es-AR')}</p>
+                    </div>
+                    <div className="order-details-link">
+                        <button className="btn-view-details">
+                            Ver detalles
+                        </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="orders-empty-state">
+              <i className="bi bi-cart-x"></i>
+              <p>Aún no has realizado ninguna compra.</p>
+              <Link to="/Products" className="btn-shop-now">
+                Ir a la tienda
+              </Link>
+            </div>
+          )}
+        </div>
         <div className="profile-actions" data-aos="fade-up" data-aos-delay="200">
           <Link to="/" className="btn-profile-action secondary">
             <i className="bi bi-arrow-left me-2"></i>

@@ -187,7 +187,7 @@
   box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
 }
 
-/* ----- Empty State ----- */
+/* ----- Empty State (Profile) ----- */
 .user-profile-empty {
   display: flex;
   flex-direction: column;
@@ -235,6 +235,161 @@
   color: white;
 }
 
+/* ----- Orders Section ----- */
+.profile-orders-section {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem 2.5rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2rem;
+}
+
+.orders-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  gap: 1rem;
+  color: #95a5a6;
+}
+
+.orders-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.order-card {
+  border: 1px solid #eef0f2;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.order-card:hover {
+  border-color: #3498db40;
+  box-shadow: 0 5px 15px rgba(52, 152, 219, 0.08);
+  transform: translateY(-2px);
+}
+
+.order-header {
+  background: #f8f9fa;
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eef0f2;
+}
+
+.order-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.order-number {
+  font-weight: 700;
+  color: #2c3e50;
+  font-size: 0.95rem;
+}
+
+.order-date {
+  font-size: 0.8rem;
+  color: #95a5a6;
+}
+
+.order-status {
+  padding: 0.3rem 0.8rem;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status-en-camino { background: #e3f2fd; color: #1e88e5; }
+.status-completado { background: #e8f5e9; color: #2e7d32; }
+.status-pendiente { background: #fff3e0; color: #f57c00; }
+.status-cancelado { background: #ffebee; color: #d32f2f; }
+
+.order-body {
+  padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.order-total-label {
+  font-size: 0.8rem;
+  color: #95a5a6;
+  margin-bottom: 0.2rem;
+}
+
+.order-total-value {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #1B5A9E;
+  margin: 0;
+}
+
+.btn-view-details {
+  background: transparent;
+  border: 2px solid #3498db30;
+  color: #3498db;
+  padding: 0.6rem 1.25rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-view-details:hover {
+  background: #3498db;
+  border-color: #3498db;
+  color: white;
+}
+
+.orders-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  text-align: center;
+  gap: 1rem;
+}
+
+.orders-empty-state i {
+  font-size: 3.5rem;
+  color: #bdc3c7;
+}
+
+.orders-empty-state p {
+  color: #7f8c8d;
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.btn-shop-now {
+  margin-top: 0.5rem;
+  background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+  color: white;
+  padding: 0.75rem 1.75rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+
+.btn-shop-now:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+  color: white;
+}
+
 /* ----- Responsive ----- */
 @media (max-width: 576px) {
   #user-profile-page {
@@ -248,12 +403,32 @@
     gap: 1.25rem;
   }
 
-  .profile-info-grid {
+  .profile-info-grid, .profile-orders-section {
     padding: 1.5rem 1.25rem;
   }
 
   .profile-name {
     font-size: 1.5rem;
+  }
+
+  .order-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .order-status {
+    align-self: flex-start;
+  }
+
+  .order-body {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .order-details-link, .btn-view-details {
+    width: 100%;
   }
 
   .profile-actions {
