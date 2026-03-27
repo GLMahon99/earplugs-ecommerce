@@ -7,18 +7,18 @@ const Banner = () => {
   
 
   return (
-    <section class="banner-area organic-breadcrumb">
+    <section className="banner-area organic-breadcrumb">
       
-      <div class="container">
-        <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
-          <div class="col-first">
+      <div className="container">
+        <div className="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+          <div className="col-first">
             <h1 id="title-banner">Detalle del producto</h1>
-            <nav class="d-flex align-items-center">
+            <nav className="d-flex align-items-center">
               <Link className="link-banner" to="/">
-                Inicio<span class="bi bi-slash-lg"></span>
+                Inicio<span className="bi bi-slash-lg"></span>
               </Link>
               <Link className="link-banner" to="/products">
-                Productos<span class="bi bi-slash-lg"></span>
+                Productos<span className="bi bi-slash-lg"></span>
               </Link>
               <span className="link-banner-active">Detalle</span>
             </nav>

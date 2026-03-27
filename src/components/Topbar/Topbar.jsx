@@ -15,12 +15,12 @@ const Topbar = () => {
           </i>
         </div>
         <div className="col d-flex justify-content-center">
-          <i class="bi bi-truck mx-1"></i> <p className="info-shipping-topbar">Envíos a CABA y GBA en 24hs hábiles</p>
+          <i className="bi bi-truck mx-1"></i> <p className="info-shipping-topbar">Envíos a CABA y GBA en 24hs hábiles</p>
         </div>
         <div className="col social-links d-none d-md-flex d-flex justify-content-center align-items-center">
           <a
             href="https://www.facebook.com/EarplugsTapones"
-            Target="_blank"
+            target="_blank"
             className="facebook"
           >
             <i className="bi bi-facebook"></i>

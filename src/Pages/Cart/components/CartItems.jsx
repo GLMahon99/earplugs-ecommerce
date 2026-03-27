@@ -1,7 +1,6 @@
 // components/cart/CartItems.jsx
 import React from "react";
 import { Link } from "react-router-dom";
-import BagSvg from '../../../components/BagSvg'
 const CartItems = ({ cart, deleteItemCart, incrementQuantity, decreaseQuantity, isFormLocked }) => {
   return (
     <>
