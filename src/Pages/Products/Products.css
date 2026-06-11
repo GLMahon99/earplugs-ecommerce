@@ -230,3 +230,129 @@
     gap: 1rem;
   }
 }
+
+/* ==========================================
+   Catalog Error and Warning styles
+   ========================================== */
+.catalog-error-container {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: var(--shadow-card);
+  max-width: 650px;
+  margin: 3rem auto;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.catalog-error-icon {
+  font-size: 4.5rem;
+  color: #e74c3c;
+  margin-bottom: 1.5rem;
+  display: inline-block;
+  animation: pulse-error 2s infinite;
+}
+
+@keyframes pulse-error {
+  0% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+    filter: drop-shadow(0 0 10px rgba(231, 76, 60, 0.3));
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+}
+
+.catalog-error-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.catalog-error-text {
+  color: #7f8c8d;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  margin-bottom: 2.5rem;
+}
+
+.btn-retry {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  background-color: var(--accent-color);
+  color: #ffffff;
+  border: none;
+  padding: 14px 36px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 6px 20px rgba(52, 152, 219, 0.25);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-retry:hover {
+  background-color: #2980b9;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(52, 152, 219, 0.35);
+  color: #ffffff;
+}
+
+.btn-retry:active {
+  transform: translateY(-1px);
+}
+
+/* Offline warning banner */
+.catalog-warning-banner {
+  background-color: #fef9e7;
+  border-left: 5px solid #f39c12;
+  color: #d35400;
+  padding: 16px 24px;
+  margin-bottom: 40px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 15px rgba(243, 156, 18, 0.08);
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 1.05rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.catalog-warning-banner span {
+  display: flex;
+  align-items: center;
+}
+
+.btn-retry-sm {
+  background-color: #f39c12;
+  color: #ffffff;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 30px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 3px 10px rgba(243, 156, 18, 0.2);
+  display: inline-flex;
+  align-items: center;
+}
+
+.btn-retry-sm:hover {
+  background-color: #e67e22;
+  transform: translateY(-1px);
+  box-shadow: 0 5px 12px rgba(243, 156, 18, 0.3);
+}

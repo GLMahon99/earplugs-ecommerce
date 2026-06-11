@@ -19,6 +19,7 @@ export const ProductsProvider = ({ children }) => {
 
   // Loader global
   const [loading, setLoading] = useState(true);
+  const [productsError, setProductsError] = useState(false);
 
   // --------------------- AUTENTICACIÓN REAL ---------------------
   const login = async (email, password) => {
@@ -110,24 +111,40 @@ const register = async (formData) => {
   }, []);
 
   // --------------------- CARGA INICIAL ---------------------
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const [productsRes, shippingRes] = await Promise.all([
-          axios.get("https://adminearplugs.up.railway.app/api/products"),
-          axios.get("https://adminearplugs.up.railway.app/api/shipping"),
-        ]);
+  const fetchProductsData = async () => {
+    try {
+      setLoading(true);
+      setProductsError(false);
+      const [productsRes, shippingRes] = await Promise.all([
+        axios.get("https://adminearplugs.up.railway.app/api/products"),
+        axios.get("https://adminearplugs.up.railway.app/api/shipping"),
+      ]);
 
-        setProducts(productsRes.data);
-        setPriceShipp(shippingRes.data);
-      } catch (error) {
-        console.error("Error cargando datos iniciales:", error);
-      } finally {
-        setLoading(false);
+      setProducts(productsRes.data);
+      setPriceShipp(shippingRes.data);
+      // Guardar en cache local para soporte offline
+      localStorage.setItem("cached_products", JSON.stringify(productsRes.data));
+      localStorage.setItem("cached_shipping", JSON.stringify(shippingRes.data));
+    } catch (error) {
+      console.error("Error cargando datos iniciales:", error);
+      setProductsError(true);
+
+      // Intentar cargar desde cache local en caso de error
+      const cachedProducts = localStorage.getItem("cached_products");
+      const cachedShipping = localStorage.getItem("cached_shipping");
+      if (cachedProducts) {
+        setProducts(JSON.parse(cachedProducts));
       }
-    };
+      if (cachedShipping) {
+        setPriceShipp(JSON.parse(cachedShipping));
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
 
-    fetchData();
+  useEffect(() => {
+    fetchProductsData();
   }, []);
 
   // --------------------- CÁLCULO DE TOTALES ---------------------
@@ -199,6 +216,8 @@ const register = async (formData) => {
         setShowLoginModal,
         loading,
         setLoading,
+        productsError,
+        fetchProductsData,
       }}
     >
       {children}
