@@ -1,7 +1,6 @@
 .hero {
   width: 100%;
   position: relative;
-  background-image: url("https://i.ibb.co/xqGxwTS8/Chat-GPT-Image-22-ago-2025-12-15-40-p-m.png");
   background-repeat: no-repeat;
   background-size: cover;
   padding: 80px 0 0 0;
@@ -63,9 +62,9 @@
 /* Fix for Tablet and Mobile: Removing the problematic horizontal background image */
 @media (max-width: 991px) {
   .hero {
-    background-image: none;
+    background-image: none !important;
     /* Spotlight effect with radial gradient to add depth */
-    background: radial-gradient(circle at center, #2468b1 0%, var(--color-primary) 80%);
+    background: radial-gradient(circle at center, #2468b1 0%, var(--color-primary) 80%) !important;
     padding: 60px 0 40px 0;
   }
 

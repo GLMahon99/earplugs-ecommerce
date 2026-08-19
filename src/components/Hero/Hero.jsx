@@ -4,7 +4,11 @@ import { Link } from 'react-router-dom';
 
 const Hero = () => {
   return (
-    <section id="hero" className="hero">
+    <section 
+      id="hero" 
+      className="hero" 
+      style={{ backgroundImage: `url("${process.env.PUBLIC_URL || ''}/hero-bg.webp")` }}
+    >
       <div className="container position-relative">
         <div className="row gy-5" data-aos="fade-in">
           <div className="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center text-center">
@@ -18,7 +22,7 @@ const Hero = () => {
             </div>
           </div>
           <div className="d-flex col-lg-6 order-1 order-lg-2 justify-content-center">
-            <img src="https://i.ibb.co/qM9wr4Wh/TPE02-ML-12.png" className=" img-hero" alt="" data-aos="zoom-out" data-aos-delay="100" />
+            <img src={`${process.env.PUBLIC_URL || ''}/hero-product.webp`} fetchPriority="high" className=" img-hero" alt="Tapones para oídos" data-aos="zoom-out" data-aos-delay="100" />
           </div>
         </div>
       </div>
