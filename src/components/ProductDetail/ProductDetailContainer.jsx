@@ -8,7 +8,7 @@ import { optimizeCloudinaryUrl } from "../../utils/cloudinaryUtils";
 const ProductDetailContainer = ({ product }) => {
   const [quantity, setQuantity] = useState(1);
   const [alertAddToCart, setAlertAddToCart] = useState(false);
-  const { addToCart, user } = useProductsContext();
+  const { addToCart } = useProductsContext();
 
   return (
     <div className="container" id="productDetail-container" data-aos="fade-up">
