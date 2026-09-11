@@ -65,7 +65,7 @@ const ProductDetailContainer = ({ product }) => {
                 <div className="col-12">
                   <button
                     className="btn button-addToCart btn-lg rounded-pill py-3 d-flex align-items-center justify-content-center"
-                    disabled={!user || product.stock === 0 || quantity > product.stock}
+                    disabled={product.stock === 0 || quantity > product.stock}
                     onClick={() => {
                       addToCart(
                         product.producto_id,
@@ -82,13 +82,6 @@ const ProductDetailContainer = ({ product }) => {
                     <i className="bi bi-cart-plus me-2"></i>
                     Agregar al carrito
                   </button>
-
-                  {!user && (
-                    <div className="mt-3 text-center small text-muted">
-                      <i className="bi bi-info-circle me-1"></i>
-                      Debés iniciar sesión para comprar.
-                    </div>
-                  )}
                 </div>
               </div>
             </div>

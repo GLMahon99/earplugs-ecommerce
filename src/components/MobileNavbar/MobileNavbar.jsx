@@ -71,26 +71,25 @@ const MobileNavbar = () => {
                 <NavLink className="navlink" to="/#contact" onClick={closeOffcanvas}>Contacto</NavLink>
 
               </li>
+              <li className="nav-item">
+                <NavLink to="/CartPage" className="navlink d-flex align-items-center gap-2" onClick={closeOffcanvas}>
+                  <div className="mobile-icon-wrapper">
+                    <i className="bi bi-bag"></i>
+                    {totalProductsInCart > 0 && <span className="mobile-cart-badge">{totalProductsInCart}</span>}
+                  </div>
+                  <span>Carrito de compras</span>
+                </NavLink>
+              </li>
+
               {user ? (
-                <>
-                  <li className="nav-item">
-                    <NavLink to="/CartPage" className="navlink d-flex align-items-center gap-2" onClick={closeOffcanvas}>
-                      <div className="mobile-icon-wrapper">
-                        <i className="bi bi-bag"></i>
-                        {totalProductsInCart > 0 && <span className="mobile-cart-badge">{totalProductsInCart}</span>}
-                      </div>
-                      <span>Carrito de compras</span>
-                    </NavLink>
-                  </li>
-                  <li className="nav-item">
-                    <NavLink to="/profile" className="navlink d-flex align-items-center gap-2" onClick={closeOffcanvas}>
-                      <div className="mobile-avatar-wrapper">
-                        <i className="bi bi-person-circle"></i>
-                      </div>
-                      <span>Mi Perfil ({user?.nombre})</span>
-                    </NavLink>
-                  </li>
-                </>
+                <li className="nav-item">
+                  <NavLink to="/profile" className="navlink d-flex align-items-center gap-2" onClick={closeOffcanvas}>
+                    <div className="mobile-avatar-wrapper">
+                      <i className="bi bi-person-circle"></i>
+                    </div>
+                    <span>Mi Perfil ({user?.nombre})</span>
+                  </NavLink>
+                </li>
               ) : (
                 <li className="nav-item mt-3">
                   <button

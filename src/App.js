@@ -59,12 +59,6 @@ function App() {
     }
   }, [loading]);
 
-  // Mostrar overlay login si no hay usuario
-  useEffect(() => {
-    if (!user) {
-      setShowLoginModal(true);
-    }
-  }, [user, setShowLoginModal]);
 
   // Init AOS para animaciones
   useEffect(() => {

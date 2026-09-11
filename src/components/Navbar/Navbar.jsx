@@ -37,25 +37,23 @@ const Navbar = () => {
         </div>
 
         <div className="col d-flex justify-content-end align-items-center gap-3">
-          {user ? (
-            <>
-              <NavLink to="/CartPage" className="nav-icon-link cart-wrapper">
-                <i className="bi bi-bag icon-cart">
-                  {totalProductsInCart > 0 && (
-                    <span className="cart-badge">{totalProductsInCart}</span>
-                  )}
-                </i>
-              </NavLink>
+          <NavLink to="/CartPage" className="nav-icon-link cart-wrapper" title="Carrito de compras">
+            <i className="bi bi-bag icon-cart">
+              {totalProductsInCart > 0 && (
+                <span className="cart-badge">{totalProductsInCart}</span>
+              )}
+            </i>
+          </NavLink>
 
-              <NavLink to="/profile" className="nav-icon-link user-profile-link">
-                <div className="user-info-container">
-                  <span id="user-name">Hola, {user?.nombre || "Usuario"}</span>
-                  <div className="user-avatar">
-                    <i className="bi bi-person-circle"></i>
-                  </div>
+          {user ? (
+            <NavLink to="/profile" className="nav-icon-link user-profile-link">
+              <div className="user-info-container">
+                <span id="user-name">Hola, {user?.nombre || "Usuario"}</span>
+                <div className="user-avatar">
+                  <i className="bi bi-person-circle"></i>
                 </div>
-              </NavLink>
-            </>
+              </div>
+            </NavLink>
           ) : (
             <button
               className="btn btn-login-custom"

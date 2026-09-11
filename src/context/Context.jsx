@@ -9,7 +9,14 @@ export const useProductsContext = () => useContext(ProductsContext);
 
 export const ProductsProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState(() => {
+    try {
+      const savedCart = localStorage.getItem("earplugs_cart");
+      return savedCart ? JSON.parse(savedCart) : [];
+    } catch {
+      return [];
+    }
+  });
   const [total, setTotal] = useState(0);
   const [totalProductsInCart, setTotalProductsInCart] = useState(0);
   const [priceShipp, setPriceShipp] = useState([]);
@@ -102,7 +109,7 @@ const register = async (formData) => {
     }
   }, []);
 
-  const canAddToCart = () => !!user;
+  const canAddToCart = () => true;
 
   // --------------------- FECHA Y HORA ---------------------
   useEffect(() => {
@@ -147,10 +154,15 @@ const register = async (formData) => {
     fetchProductsData();
   }, []);
 
-  // --------------------- CÁLCULO DE TOTALES ---------------------
+  // --------------------- CÁLCULO DE TOTALES Y PERSISTENCIA ---------------------
   useEffect(() => {
     setTotal(cart.reduce((acc, item) => acc + item.precio * item.quantity, 0));
     setTotalProductsInCart(cart.reduce((acc, item) => acc + item.quantity, 0));
+    try {
+      localStorage.setItem("earplugs_cart", JSON.stringify(cart));
+    } catch (e) {
+      console.error("Error guardando carrito en localStorage:", e);
+    }
   }, [cart]);
 
   // --------------------- FUNCIONES DEL CARRITO ---------------------
