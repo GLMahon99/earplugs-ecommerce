@@ -10,6 +10,7 @@ const ProductsList = ({ filteredProducts }) => {
                     id={item.producto_id}
                     title={item.titulo}
                     imagen={item.img}
+                    precio={item.precio}
                     size={index < 5 ? "small" : "large"}
                 />
             ))}
