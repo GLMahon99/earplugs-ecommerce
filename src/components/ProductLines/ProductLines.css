@@ -1,0 +1,71 @@
+.product-lines {
+  padding: 60px 0;
+}
+
+.product-lines .icon-box {
+  padding: 30px;
+  position: relative;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 0 29px 0 rgba(68, 88, 144, 0.12);
+  transition: all 0.3s ease-in-out;
+  border-radius: 8px;
+  z-index: 1;
+  text-align: center;
+  width: 100%;
+}
+
+.product-lines .icon-box:hover {
+  transform: translateY(-5px);
+}
+
+.product-lines .icon {
+  margin: 0 auto 20px auto;
+  padding-top: 10px;
+  display: inline-block;
+  text-align: center;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  background: var(--color-primary);
+  transition: all 0.3s ease-in-out;
+}
+
+.product-lines .icon i {
+  font-size: 36px;
+  line-height: 1;
+  color: #fff;
+}
+
+.product-lines .icon-box h4 {
+  font-weight: 700;
+  margin-bottom: 15px;
+  font-size: 20px;
+  color: var(--color-secondary);
+}
+
+.product-lines .icon-box p {
+  line-height: 24px;
+  font-size: 14px;
+  margin-bottom: 0;
+  color: #444444;
+}
+
+.btn-buy-online {
+  font-family: var(--font-primary);
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 12px 32px;
+  border-radius: 50px;
+  transition: 0.3s;
+  color: #fff;
+  background: var(--color-primary);
+  text-decoration: none;
+}
+
+.btn-buy-online:hover {
+  background: var(--color-secondary);
+  color: #fff;
+}

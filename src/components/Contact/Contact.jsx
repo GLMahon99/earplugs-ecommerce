@@ -104,8 +104,12 @@ const Contact = () => {
               <div className="info-item d-flex">
                 <i className="bi bi-phone flex-shrink-0"></i>
                 <div>
-                  <h4>Teléfono:</h4>
-                  <p>+1 5589 55488 55</p>
+                  <h4>Teléfono / WhatsApp:</h4>
+                  <p>
+                    <a href="https://wa.me/5491138054707" target="_blank" rel="noreferrer noopener" style={{ color: "inherit" }}>
+                      +54 11 3805 4707
+                    </a>
+                  </p>
                 </div>
               </div>
 

@@ -43,7 +43,7 @@ const CartItems = ({ cart, deleteItemCart, incrementQuantity, decreaseQuantity, 
               </div>
             </div>
             <div className="col-7 col-sm-3 d-flex justify-content-end align-items-center mt-3 mt-sm-0">
-               <span className="fw-bold text-primary fs-5">${p.precio.toLocaleString('es-AR')},00</span>
+               <span className="fw-bold text-primary fs-5">${p.precio.toLocaleString('es-AR')},00 <span className="fs-6 text-muted fw-normal">c/u</span></span>
             </div>
           </div>
         ))

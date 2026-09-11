@@ -11,7 +11,7 @@ const Topbar = () => {
             <a href="mailto:tjmearplugs@hotmail.com">tjmearplugs@hotmail.com</a>
           </i>
           <i className="bi bi-phone d-flex align-items-center ms-4">
-            <span>+1 5589 55488 55</span>
+            <a href="tel:+541138054707" style={{ color: "inherit" }}>+54 11 3805 4707</a>
           </i>
         </div>
         <div className="col d-flex justify-content-center">

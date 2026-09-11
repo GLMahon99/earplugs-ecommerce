@@ -5,6 +5,7 @@ import Contact from '../components/Contact/Contact';
 import Counter from '../components/Counter/Counter';
 import Hero from '../components/Hero/Hero';
 import Questions from '../components/Questions/Questions';
+import ProductLines from '../components/ProductLines/ProductLines';
 // import Team from '../components/Team/Team';
 import Testimonials from '../components/Testimonials/Testimonials';
 import ScrollTop from '../components/ScrollTop/ScrollTop';
@@ -40,6 +41,7 @@ const Home = () => {
         <Hero/>
       <main id='main'>
         <About/>
+        <ProductLines/>
         <Clients/>
         <Counter/>
         <Testimonials/>

@@ -70,7 +70,7 @@ const Footer = () => {
             <h4>Contacto</h4>
             <p>
               Buenos Aires, Argentina. <br></br>
-              <strong>Teléfono:</strong> +1 5589 55488 55<br></br>
+              <strong>Teléfono:</strong> <a href="https://wa.me/5491138054707" target="_blank" rel="noreferrer noopener" style={{ color: "inherit" }}>+54 11 3805 4707</a><br></br>
               <strong>Email:</strong> tjmearplugs@hotmail.com<br></br>
             </p>
           </div>

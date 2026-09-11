@@ -24,6 +24,7 @@ const CartPage = () => {
     user,
     dateNow,
     setShowLoginModal,
+    totalProductsInCart,
   } = useProductsContext();
 
   const [preferenceId, setPreferenceId] = useState(null);
@@ -76,7 +77,7 @@ const CartPage = () => {
       const items = cart.map((item) => ({
         title: item.titulo,
         quantity: item.quantity,
-        unit_price: item.precio * item.quantity + shippingPrice,
+        unit_price: item.precio,
       }));
 
       const customerData = {
@@ -157,7 +158,35 @@ const CartPage = () => {
             </div>
 
             {cart.length > 0 && (
-              !user ? (
+              totalProductsInCart < 12 ? (
+                <div className="col-lg-10 col-12 mt-4" data-aos="fade-up">
+                  <div className="card shadow-sm border-0 rounded-4 p-4 p-md-5 text-center bg-white">
+                    <div className="mb-3">
+                      <div
+                        className="d-inline-flex align-items-center justify-content-center rounded-circle p-3 mb-2"
+                        style={{ width: "70px", height: "70px", backgroundColor: "#fff3cd" }}
+                      >
+                        <i className="bi bi-exclamation-triangle fs-1 text-warning"></i>
+                      </div>
+                    </div>
+                    <h3 className="fw-bold mb-2" style={{ color: "var(--color-primary)" }}>
+                      Mínimo de compra requerido
+                    </h3>
+                    <p className="text-muted mx-auto" style={{ maxWidth: "550px" }}>
+                      La cantidad mínima para realizar un pedido es de 12 unidades en total (pueden ser productos surtidos). Actualmente tenés {totalProductsInCart} {totalProductsInCart === 1 ? 'unidad' : 'unidades'} en tu carrito.
+                    </p>
+                    <div className="d-flex justify-content-center mt-4">
+                      <Link
+                        to="/products"
+                        className="btn btn-primary btn-lg rounded-pill px-5 fw-bold shadow-sm"
+                      >
+                        <i className="bi bi-cart-plus me-2"></i>
+                        Seguir comprando
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              ) : !user ? (
                 <div className="col-lg-10 col-12 mt-4" data-aos="fade-up">
                   <div className="card shadow-sm border-0 rounded-4 p-4 p-md-5 text-center bg-white">
                     <div className="mb-3">

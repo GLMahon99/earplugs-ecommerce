@@ -17,8 +17,9 @@ const Hero = () => {
               <h2 className="text-uppercase">silicona moldeable</h2>
             </div>
             <p className="text-uppercase">#1 En Ventas de Argentina</p>
-            <div className="d-flex justify-content-center">
-              <Link to="/products" className="btn-get-started">Ver Más Productos</Link>
+            <div className="d-flex justify-content-center gap-3 flex-wrap">
+              <Link to="/products" className="btn-get-started mb-2">Comprar Online</Link>
+              <a href="#contact" className="btn-get-started mb-2" style={{ backgroundColor: 'transparent', border: '2px solid #fff' }}>Atención a Empresas</a>
             </div>
           </div>
           <div className="d-flex col-lg-6 order-1 order-lg-2 justify-content-center">

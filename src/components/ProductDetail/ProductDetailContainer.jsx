@@ -40,7 +40,7 @@ const ProductDetailContainer = ({ product }) => {
             <div className="purchase-section mt-5 p-3 p-md-4 bg-light rounded-4 overflow-hidden">
               <div className="row align-items-center gy-4 gx-3 mx-0">
                 <div className="col-12 col-sm-6">
-                  <div className="product-price">${product.precio?.toLocaleString()},00</div>
+                  <div className="product-price">${product.precio?.toLocaleString()},00 <span style={{fontSize: "1rem", color: "#6c757d", fontWeight: "normal"}}>c/u</span></div>
                   <div className="product-stock mt-1">
                     <i className="bi bi-check-circle-fill me-2"></i>
                     {product.stock} unidades disponibles
@@ -49,16 +49,21 @@ const ProductDetailContainer = ({ product }) => {
 
                 <div className="col-12 col-sm-6">
                   <label className="form-label small fw-bold text-muted">Cantidad</label>
-                  <div className="d-flex align-items-center">
-                    <input
-                      type="number"
-                      min="1"
-                      max={product.stock}
-                      value={quantity}
-                      onChange={(e) => setQuantity(Math.max(1, Math.min(product.stock, Number(e.target.value))))}
-                      className="form-control form-control-lg text-center fw-bold me-3"
-                      style={{ width: '80px', borderRadius: '12px' }}
-                    />
+                  <div className="d-flex flex-column">
+                    <div className="d-flex align-items-center">
+                      <input
+                        type="number"
+                        min="1"
+                        max={product.stock}
+                        value={quantity}
+                        onChange={(e) => setQuantity(Math.max(1, Math.min(product.stock, Number(e.target.value))))}
+                        className="form-control form-control-lg text-center fw-bold me-3"
+                        style={{ width: '80px', borderRadius: '12px' }}
+                      />
+                    </div>
+                    <small className="text-muted mt-1" style={{ fontSize: '0.75rem', lineHeight: '1.2' }}>
+                      * Compra mínima en la web: 12 unidades (pueden ser surtidas)
+                    </small>
                   </div>
                 </div>
 
