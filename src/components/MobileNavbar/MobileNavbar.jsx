@@ -19,7 +19,7 @@ const MobileNavbar = () => {
   };
 
   return (
-    <nav className="navbar fixed-top">
+    <nav className="navbar mobile-navbar fixed-top">
       <div className="container-fluid">
         <h1 translate="no" className="px-4">
           Earplugs<span>.</span>
@@ -55,24 +55,24 @@ const MobileNavbar = () => {
           <div className="offcanvas-body">
             <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
               <li className="nav-item">
-                <NavLink className="navlink" to="/" onClick={closeOffcanvas}>
+                <NavLink className="navlink" to="/" data-bs-dismiss="offcanvas" onClick={closeOffcanvas}>
                   Inicio
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="navlink" to="/#about" onClick={closeOffcanvas}>Nosotros</NavLink>
+                <NavLink className="navlink" to="/#about" data-bs-dismiss="offcanvas" onClick={closeOffcanvas}>Nosotros</NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="navlink" to="/products" onClick={closeOffcanvas}>
+                <NavLink className="navlink" to="/products" data-bs-dismiss="offcanvas" onClick={closeOffcanvas}>
                   Productos
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="navlink" to="/#contact" onClick={closeOffcanvas}>Contacto</NavLink>
+                <NavLink className="navlink" to="/#contact" data-bs-dismiss="offcanvas" onClick={closeOffcanvas}>Contacto</NavLink>
 
               </li>
               <li className="nav-item">
-                <NavLink to="/CartPage" className="navlink d-flex align-items-center gap-2" onClick={closeOffcanvas}>
+                <NavLink to="/CartPage" className="navlink d-flex align-items-center gap-2" data-bs-dismiss="offcanvas" onClick={closeOffcanvas}>
                   <div className="mobile-icon-wrapper">
                     <i className="bi bi-bag"></i>
                     {totalProductsInCart > 0 && <span className="mobile-cart-badge">{totalProductsInCart}</span>}
@@ -83,7 +83,7 @@ const MobileNavbar = () => {
 
               {user ? (
                 <li className="nav-item">
-                  <NavLink to="/profile" className="navlink d-flex align-items-center gap-2" onClick={closeOffcanvas}>
+                  <NavLink to="/profile" className="navlink d-flex align-items-center gap-2" data-bs-dismiss="offcanvas" onClick={closeOffcanvas}>
                     <div className="mobile-avatar-wrapper">
                       <i className="bi bi-person-circle"></i>
                     </div>
@@ -94,6 +94,7 @@ const MobileNavbar = () => {
                 <li className="nav-item mt-3">
                   <button
                     className="btn btn-login-mobile w-100"
+                    data-bs-dismiss="offcanvas"
                     onClick={() => {
                       setShowLoginModal(true);
                       closeOffcanvas();

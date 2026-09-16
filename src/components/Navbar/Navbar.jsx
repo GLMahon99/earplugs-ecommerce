@@ -7,36 +7,32 @@ const Navbar = () => {
   const { totalProductsInCart, user, setShowLoginModal } = useProductsContext();
 
   return (
-    <header id="header" className="header d-flex align-items-center ">
-      <div className="row-cols-3 container d-flex">
-        <div className="col d-flex justify-content-start">
-          <a href="/" className="logo d-flex align-items-center">
-            <h1 translate="no">
-              Earplugs<span>.</span>
-            </h1>
-          </a>
-        </div>
+    <header id="header" className="header d-flex align-items-center">
+      <div className="container d-flex align-items-center justify-content-between">
+        <a href="/" className="logo d-flex align-items-center">
+          <h1 translate="no">
+            Earplugs<span>.</span>
+          </h1>
+        </a>
 
-        <div className="col d-flex justify-content-center">
-          <nav id="navbar" className="navbar ">
-            <ul>
-              <li>
-                <NavLink to="/">Inicio</NavLink>
-              </li>
-              <li>
-                <NavLink to="/#about">Nosotros</NavLink>
-              </li>
-              <li>
-                <NavLink to="/products">Productos</NavLink>
-              </li>
-              <li>
-                <NavLink to="/#contact">Contacto</NavLink>
-              </li>
-            </ul>
-          </nav>
-        </div>
+        <nav id="navbar" className="navbar d-flex justify-content-center">
+          <ul className="d-flex align-items-center gap-4 m-0 p-0 list-unstyled">
+            <li>
+              <NavLink to="/">Inicio</NavLink>
+            </li>
+            <li>
+              <NavLink to="/#about">Nosotros</NavLink>
+            </li>
+            <li>
+              <NavLink to="/products">Productos</NavLink>
+            </li>
+            <li>
+              <NavLink to="/#contact">Contacto</NavLink>
+            </li>
+          </ul>
+        </nav>
 
-        <div className="col d-flex justify-content-end align-items-center gap-3">
+        <div className="d-flex align-items-center gap-3">
           <NavLink to="/CartPage" className="nav-icon-link cart-wrapper" title="Carrito de compras">
             <i className="bi bi-bag icon-cart">
               {totalProductsInCart > 0 && (

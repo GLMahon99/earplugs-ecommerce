@@ -2,10 +2,9 @@ import React, {useEffect} from 'react';
 import About from '../components/About/About';
 import Clients from '../components/Clients/Clients';
 import Contact from '../components/Contact/Contact';
-import Counter from '../components/Counter/Counter';
 import Hero from '../components/Hero/Hero';
 import Questions from '../components/Questions/Questions';
-import ProductLines from '../components/ProductLines/ProductLines';
+import Solutions from '../components/Solutions/Solutions';
 // import Team from '../components/Team/Team';
 import Testimonials from '../components/Testimonials/Testimonials';
 import ScrollTop from '../components/ScrollTop/ScrollTop';
@@ -40,10 +39,9 @@ const Home = () => {
     return ( <>
         <Hero/>
       <main id='main'>
+        <Solutions/>
         <About/>
-        <ProductLines/>
         <Clients/>
-        <Counter/>
         <Testimonials/>
         <Questions/>
         {/* <Team/> */}

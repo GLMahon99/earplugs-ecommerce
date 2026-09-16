@@ -8,15 +8,13 @@ const Aboout = () => {
         <div className="section-header">
           <h2>Nosotros</h2>
           <p>
-            Dale a tus oídos el cuidado que se merecen. Disfruta de noches de
-            sueño ininterrumpido y revitalizante. Evita infecciones y dolor por
-            el ingreso de agua.{" "}
+            Expertos en protección auditiva. Diseñamos y fabricamos soluciones de alta calidad para empresas y consumidores, garantizando seguridad y confort en cada uso.
           </p>
         </div>
 
         <div className="row gy-4">
           <div className="col-lg-6">
-            <h3>Conoce más sobre Earplugs</h3>
+            <h3>Fabricantes Líderes en Argentina</h3>
             <img
               src="https://i.ibb.co/cyXMVs6/Sin-t-tulo-2.png"
               className="img-fluid border-rounded mb-4"
