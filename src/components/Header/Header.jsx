@@ -41,7 +41,7 @@ const Header = () => {
 
   return (
     <>
-      <Topbar/>
+      {!isMobile && <Topbar />}
       {isMobile ? <MobileNavbar /> : <Navbar />}
       
           

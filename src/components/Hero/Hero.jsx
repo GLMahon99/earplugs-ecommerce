@@ -110,7 +110,7 @@ const Hero = () => {
           <div className="row gy-3">
             {slide.iconBoxes.map((item, idx) => (
               <div className="col-lg-3 col-6" key={idx}>
-                <div className="icon-box d-flex align-items-center gap-3">
+                <div className="icon-box d-flex align-items-center gap-2 gap-lg-3">
                   <div className="icon"><i className={`bi ${item.icon}`}></i></div>
                   <h4 className="title m-0">{item.title}</h4>
                 </div>

@@ -19,8 +19,11 @@ const MobileNavbar = () => {
   };
 
   return (
-    <nav className="navbar mobile-navbar fixed-top">
-      <div className="container-fluid">
+    <nav className="navbar mobile-navbar fixed-top p-0 flex-column">
+      <div className="w-100 text-center py-1 text-white d-flex justify-content-center align-items-center" style={{ fontSize: "0.85rem", height: "30px", backgroundColor: "rgba(10, 32, 75, 0.95)" }}>
+        <i className="bi bi-truck mx-1"></i> Envíos a CABA y GBA en 24hs hábiles
+      </div>
+      <div className="container-fluid py-2">
         <h1 translate="no" className="px-4">
           Earplugs<span>.</span>
         </h1>
