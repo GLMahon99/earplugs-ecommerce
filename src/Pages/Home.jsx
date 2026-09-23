@@ -1,51 +1,19 @@
-import React, {useEffect} from 'react';
-import About from '../components/About/About';
+import React from 'react';
 import Clients from '../components/Clients/Clients';
-import Contact from '../components/Contact/Contact';
 import Hero from '../components/Hero/Hero';
 import Questions from '../components/Questions/Questions';
 import Solutions from '../components/Solutions/Solutions';
-// import Team from '../components/Team/Team';
 import Testimonials from '../components/Testimonials/Testimonials';
 import ScrollTop from '../components/ScrollTop/ScrollTop';
 
-
-import { useLocation } from 'react-router-dom';
-
 const Home = () => {
-  const location = useLocation();
-
-  useEffect(() => {
-    // Verifica si la ubicación actual tiene un hash de sección
-    if (location.hash === '#contact') {
-      // Desplázate automáticamente a la sección de contacto si el hash coincide
-      const contactSection = document.getElementById('contact');
-      if (contactSection) {
-        contactSection.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
-  }, [location.hash]);
-
-  useEffect(() => {
-    // Verifica si la ubicación actual tiene un hash de sección
-    if (location.hash === '#about') {
-      // Desplázate automáticamente a la sección de contacto si el hash coincide
-      const contactSection = document.getElementById('about');
-      if (contactSection) {
-        contactSection.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
-  }, [location.hash]);
     return ( <>
         <Hero/>
       <main id='main'>
         <Solutions/>
-        <About/>
         <Clients/>
         <Testimonials/>
         <Questions/>
-        {/* <Team/> */}
-        <Contact/>
         <ScrollTop />
       </main>
       

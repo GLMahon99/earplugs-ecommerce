@@ -88,6 +88,26 @@ const Aboout = () => {
             </div>
           </div>
         </div>
+        <div className="row mt-5 pt-4 border-top">
+          <div className="col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+            <div className="card shadow-sm border-0 h-100" style={{ borderRadius: "15px" }}>
+              <div className="card-body p-4 text-center">
+                <i className="bi bi-bullseye text-primary" style={{ fontSize: "2.5rem" }}></i>
+                <h4 className="mt-3 mb-3 fw-bold">Nuestra Misión</h4>
+                <p className="text-muted">Proporcionar soluciones auditivas innovadoras y accesibles, protegiendo la salud auditiva de nuestros clientes con productos de máxima calidad, diseño ergonómico y materiales hipoalergénicos.</p>
+              </div>
+            </div>
+          </div>
+          <div className="col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+            <div className="card shadow-sm border-0 h-100" style={{ borderRadius: "15px" }}>
+              <div className="card-body p-4 text-center">
+                <i className="bi bi-eye text-primary" style={{ fontSize: "2.5rem" }}></i>
+                <h4 className="mt-3 mb-3 fw-bold">Nuestra Visión</h4>
+                <p className="text-muted">Ser reconocidos a nivel internacional como la marca líder y referente en prevención y cuidado auditivo, marcando tendencia en confort, durabilidad y satisfacción del usuario en diversos entornos.</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

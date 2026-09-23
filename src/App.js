@@ -12,6 +12,8 @@ import AOS from "aos";
 import LoginOverlay from "./components/LoginOverlay/LoginOverlay";
 import { SectionLoginRegister } from "./Pages/SectionLoginRegister/SectionLoginRegister";
 import UserProfile from "./Pages/UserProfile/UserProfile";
+import AboutPage from "./Pages/AboutPage/AboutPage";
+import ContactPage from "./Pages/ContactPage/ContactPage";
 import { useProductsContext } from "./context/Context";
 import "aos/dist/aos.css";
 
@@ -99,6 +101,8 @@ function App() {
                 <Route path="/products/:id" element={<ProductDetail />} />
                 <Route path="/CartPage" element={<CartPage />} />
                 <Route path="/profile" element={<UserProfile />} />
+                <Route path="/about" element={<AboutPage />} />
+                <Route path="/contact" element={<ContactPage />} />
               </Route>
 
               {/* Rutas totalmente apartadas (como la de registro) no usan el Header/Footer */}

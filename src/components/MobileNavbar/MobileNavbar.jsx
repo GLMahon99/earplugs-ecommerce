@@ -67,7 +67,7 @@ const MobileNavbar = () => {
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="navlink" to="/#about" onClick={closeOffcanvas}>Nosotros</NavLink>
+                <NavLink className="navlink" to="/about" onClick={closeOffcanvas}>Nosotros</NavLink>
               </li>
               <li className="nav-item">
                 <NavLink className="navlink" to="/products" onClick={closeOffcanvas}>
@@ -75,7 +75,7 @@ const MobileNavbar = () => {
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="navlink" to="/#contact" onClick={closeOffcanvas}>Contacto</NavLink>
+                <NavLink className="navlink" to="/contact" onClick={closeOffcanvas}>Contacto</NavLink>
 
               </li>
               <li className="nav-item">

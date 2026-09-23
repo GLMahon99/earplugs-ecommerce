@@ -212,6 +212,22 @@ const Contact = () => {
             </form>
           </div>
         </div>
+        <div className="row mt-5 pt-4" data-aos="fade-up" data-aos-delay="100">
+          <div className="col-12">
+            <div className="map-container rounded overflow-hidden shadow-sm" style={{ height: "400px" }}>
+              <iframe
+                title="Mapa de ubicación"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d105073.44366964347!2d-58.5033383!3d-34.6156624!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcca3b4ef90cbd%3A0xa0b3812e88e88e87!2sBuenos%20Aires%2C%20CABA%2C%20Argentina!5e0!3m2!1ses!2sus!4v1690000000000!5m2!1ses!2sus"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
