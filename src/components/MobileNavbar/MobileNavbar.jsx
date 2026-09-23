@@ -11,9 +11,13 @@ const MobileNavbar = () => {
   const closeOffcanvas = () => {
     const offcanvasElement = offcanvasRef.current;
     if (offcanvasElement) {
-      const bsOffcanvas = window.bootstrap?.Offcanvas.getInstance(offcanvasElement);
+      const bsOffcanvas = window.bootstrap?.Offcanvas?.getInstance(offcanvasElement) || window.bootstrap?.Offcanvas?.getOrCreateInstance(offcanvasElement);
       if (bsOffcanvas) {
         bsOffcanvas.hide();
+      } else {
+        // Fallback
+        const closeBtn = offcanvasElement.querySelector('.btn-close');
+        if (closeBtn) closeBtn.click();
       }
     }
   };
@@ -58,24 +62,24 @@ const MobileNavbar = () => {
           <div className="offcanvas-body">
             <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
               <li className="nav-item">
-                <NavLink className="navlink" to="/" data-bs-dismiss="offcanvas" onClick={closeOffcanvas}>
+                <NavLink className="navlink" to="/" onClick={closeOffcanvas}>
                   Inicio
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="navlink" to="/#about" data-bs-dismiss="offcanvas" onClick={closeOffcanvas}>Nosotros</NavLink>
+                <NavLink className="navlink" to="/#about" onClick={closeOffcanvas}>Nosotros</NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="navlink" to="/products" data-bs-dismiss="offcanvas" onClick={closeOffcanvas}>
+                <NavLink className="navlink" to="/products" onClick={closeOffcanvas}>
                   Productos
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="navlink" to="/#contact" data-bs-dismiss="offcanvas" onClick={closeOffcanvas}>Contacto</NavLink>
+                <NavLink className="navlink" to="/#contact" onClick={closeOffcanvas}>Contacto</NavLink>
 
               </li>
               <li className="nav-item">
-                <NavLink to="/CartPage" className="navlink d-flex align-items-center gap-2" data-bs-dismiss="offcanvas" onClick={closeOffcanvas}>
+                <NavLink to="/CartPage" className="navlink d-flex align-items-center gap-2" onClick={closeOffcanvas}>
                   <div className="mobile-icon-wrapper">
                     <i className="bi bi-bag"></i>
                     {totalProductsInCart > 0 && <span className="mobile-cart-badge">{totalProductsInCart}</span>}
@@ -86,7 +90,7 @@ const MobileNavbar = () => {
 
               {user ? (
                 <li className="nav-item">
-                  <NavLink to="/profile" className="navlink d-flex align-items-center gap-2" data-bs-dismiss="offcanvas" onClick={closeOffcanvas}>
+                  <NavLink to="/profile" className="navlink d-flex align-items-center gap-2" onClick={closeOffcanvas}>
                     <div className="mobile-avatar-wrapper">
                       <i className="bi bi-person-circle"></i>
                     </div>
